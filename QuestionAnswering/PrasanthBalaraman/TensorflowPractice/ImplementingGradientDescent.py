@@ -34,11 +34,27 @@ theta = tf.Variable(tf.random_uniform([train_X_plus_bias.shape[1], 1], -1.0, 1.0
 y_predicted = tf.matmul(X_train, theta, name="predictions")
 error = y_predicted - y_train
 root_mean_squared_error = tf.sqrt(tf.reduce_mean(tf.square(error), name="rmse"))
-# manually computing gradients from normal quation
-#gradients = 2/train_X_plus_bias.shape[0] * tf.matmul(tf.transpose(X_train), error)
-# using autodiff/auto differentiation feature of tensorflow 
-gradients = tf.gradients(root_mean_squared_error, [theta])[0]
-training_ops = tf.assign(theta, theta - learning_rate*gradients)
+
+# manually finding gradients become very difficult with the loss functions complexity
+# momentum optimizer converges faster than gradient descent optimizer
+
+# # TO MANUALLY FIND GRADIENTS AND UPDATE PARAMETERS, UNCOMMENT BELOW THREE LINES 
+# # manually computing gradients from normal quation
+# gradients = 2/train_X_plus_bias.shape[0] * tf.matmul(tf.transpose(X_train), error)
+# training_ops = tf.assign(theta, theta - learning_rate*gradients)
+
+# # TO USE TENSORFLOW AUTO DIFFERENTIATION FEATURE AND UPDATE PARAMETERS, UNCOMMENT BELOW THREE LINES  
+# # using autodiff/auto differentiation feature of tensorflow 
+# gradients = tf.gradients(root_mean_squared_error, [theta])[0]
+# training_ops = tf.assign(theta, theta - learning_rate*gradients)
+
+# # TO USE GRADIENT DESCENT OPTIMIZER, UNCOMMENT BELOW TWO LINES
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+# training_ops = optimizer.minimize(root_mean_squared_error)
+
+# TO USE MOMENTUM OPTIMIZER, UNCOMMENT BELOW TWO LINES
+optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate, momentum=0.9)
+training_ops = optimizer.minimize(root_mean_squared_error)
 
 # training and testing  the network
 with tf.Session() as sess:
