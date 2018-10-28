@@ -8,14 +8,14 @@ housing = fetch_california_housing()
 
 # splitting the dataset to train and test set 
 train_X, test_X, train_y, test_y = train_test_split(housing.data, housing.target, test_size=0.2, random_state=42)
-print("Shape after splitting into train and test set:", train_X.shape, test_X.shape, train_y.shape, train_y.shape)
+print("\nShape after splitting into train and test set:", train_X.shape, test_X.shape, train_y.shape, train_y.shape)
 
 # adding bias to existing features and reshaping y to (rows, 1)
 train_X_plus_bias = np.c_[np.ones((train_X.shape[0], 1)), train_X]
 test_X_plus_bias = np.c_[np.ones((test_X.shape[0], 1)), test_X]
 train_y_reshaped = train_y.reshape(-1, 1)
 test_y_reshaped = test_y.reshape(-1, 1)
-print("\nShape after adding bias and reshaping y:", train_X_plus_bias.shape, test_X_plus_bias.shape, train_y_reshaped.shape, test_y_reshaped.shape)
+print("Shape after adding bias and reshaping y:", train_X_plus_bias.shape, test_X_plus_bias.shape, train_y_reshaped.shape, test_y_reshaped.shape)
 
 # creating tensorflow input nodes of computational graph 
 X_train = tf.constant(train_X_plus_bias, dtype=tf.float32, name="X_train")
