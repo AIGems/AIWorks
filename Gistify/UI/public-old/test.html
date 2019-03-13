@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
+    <meta charset="utf-8">
+
+    <title>New Gistify UI</title>
+  </head>
+  <body>
+    <div class='chatgistrow'>
+      <div class='chatwindowleft'>
+        <!-- <p>chat window</p> -->
+        <iframe id="frameName" src="chat.html" style="height:100%;width:70%"></iframe>
+      </div>
+      <div class='gistwindowright'>
+        <iframe src="gistifyw3ref.html" style="height:100%;width:30%"></iframe>
+		<button onclick="changeFrame()">LINK</button>
+        <!-- <div class="textgist">
+          Gist window
+        </div>
+        <div class="treegist">
+          this is gist summary
+          <div class="treegistsum left">
+            test1
+            <div class="content">
+              this is chat1
+            </div>
+          </div>
+          <div class="treegistsum right">
+            test2
+            <div class="content">
+              this is chat2
+            </div>
+          </div>
+          <div class="treegistsum left">
+            test3
+            <div class="content">
+              this is chat3
+            </div>
+          </div>
+          <div class="treegistsum right">
+            test4
+            <div class="content">
+              this is chat4
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <script src='assets/js/main.js'></script>
+	<script>
+    function changeFrame() {
+          document.getElementById('frameName').src ='chatTemplate.html';
+		  $(".gistify_sub_header_cont").html="Hi!";
+      }
+</script>
+  </body>
+</html>

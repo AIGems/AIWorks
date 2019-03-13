@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/chat.js"></script>
+  <link href="assets/css/mystyle.css" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href="http://cdn.kendostatic.com/2013.2.716/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="http://cdn.kendostatic.com/2013.2.716/styles/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://cdn.kendostatic.com/2013.2.716/js/kendo.all.min.js"></script>
+
+<!-- <meta charset=utf-8 /> -->
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by burkeholland (http://jsbin.com/AreBAWU/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<!-- <meta name="robots" content="noindex"> -->
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  /* border-left: 16px solid white; */
+  border-bottom: 16px solid red;
+  width: 100px;
+  height: 100px;
+
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+<title>JS Bin</title>
+</head>
+  <body>
+    <!-- <div class="page_cont"> -->
+    <div class="chat-main-div">
+      <div id="chat_widget_container_id_1" class="chat_widget_container container-chat-borderStyle">
+        <div id="chat_conversation_01" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.PNG" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Welcome to G-Mobile. How may I help you?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_02" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">
+                I received a text informing my outstanding bill.<br />I would
+                like to know the break-up of my bill.
+              </td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_03" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                May I have your mobile number?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_04" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">9812345678</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_05" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Here are the details:<br />Rent: $50, Excess Data: $8.3, Tax:
+                $2.2, Total: $60.5<br />Would you like to pay now?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_06" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">No</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_07" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Is there anything else that I can help you with?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_08" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td id="chat_conversation_08_conversation_cont_right" class="conversation_cont_right">
+                I would like to change my plan as I tend to use more data. I
+                also called customer care this morning about the same and it was
+                a frustrating wait for 20 minutes, so I had to hang up.
+              </td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_09" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Are you looking for a plan with more data?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_10" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">yes</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_11" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                What is your minimum data requirement per day?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_12" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">2 GB</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_13" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Your current plan has unlimited voice. Would you like to change
+                it?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_14" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">No</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_15" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Your current plan has 100 SMS per day. Would you like to change
+                it?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_16" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">No</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_17" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Here is the best plan that meets your requirements:<br />
+                Plan: Freedom-80 Voice: Unlimited SMS: 100 per day Data: 3 GB
+                per day Rent: $80
+                <br />Would you like to switch to this plan?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_18" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">No</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_19" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Is there anything else that I can help you with?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_20" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td id="chat_conversation_20_conversation_cont_right" class="conversation_cont_right">
+                The suggested plan is too costly. T-Mobile offers more data for
+                much cheaper cost.
+              </td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_21" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Please wait while I transfer you to our customer service
+                representative.
+              </td>
+            </tr>
+          </table>
+        </div>
+    </div>
+    <div>
+    <input id="message-reply-box" class="form-control" name="text" placeholder="Write something..." aria-hidden="true" />
+    <button
+    class="wwe-send-button"
+    onclick='agentReply("message-reply-box");scrollDown()'
+    >
+    Send
+    </button>
+    </div>
+
+    <table><tr><td></td></tr></table>
+    <table><tr><td></td></tr></table>
+
+    <table class="gistify_table">
+          <div id="acw_notes">
+            <tr>
+              <td class="gistify_sub_header_cont">
+                <label><b>Notes</b><br/></label>
+              </td>
+      </tr>
+      <tr>
+              <td>
+                <textarea id="acw" class="form-control-acw">
+    The plan is too costly and I am frustrated. Even operators like T-Mobile are offering better plans.</textarea
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="gistify_sub_header_cont" colspan="4">
+                <button
+                  class="button_notes button4_notes"
+                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'
+                >
+                  Submit
+                </button>
+              </td>
+            </tr>
+          </div>
+        </table>
+    </div>
+
+  </br>
+    <button class="k-button" id="open" backgroundColor="black"><font color="orange">WWE V9.0</font></button>
+  </body>
+
+<script>
+
+function magic(){
+  document.getElementById('load').style.display='block';
+  document.getElementById('install').value='Installing';
+}
+// attach kendoAlert to the window
+window.kendoAlert = function(msg) {
+
+  // create modal window on the fly
+  var win = $("<div>").kendoWindow({
+    modal: true
+  }).getKendoWindow();
+
+  // set the content
+  win.content(msg);
+
+  // center it and open it
+  win.center().open();
+};
+
+$(function() {
+  $("#open").on("click", function() {
+    kendoAlert("<table><tr><td>Hey! New Plugin Gistify Available!</td></tr><tr><td></td></tr><tr><td><center><button id='install' onclick=(magic())>Install Now</button></center></td></tr><tr><td><div id='load' style='display:none;'><meta http-equiv='refresh' content='5;url=chat.html' /><h2>Wait few minutes to play with Gistify!</h2><div class='loader'></div></div></td></tr></table>");
+
+    // kendoAlert("<meta http-equiv='refresh' content='5;url=https://0cb0293a.ngrok.io/chat.html' /><h2>Keen to play with Gistify? Please wait...still updating...</h2><div class='loader'></div>");
+    // </div>
+  });
+});
+</script>
+<!-- <script src="http://static.jsbin.com/js/render/edit.js?4.1.7"></script> -->
+<!-- <script>jsbinShowEdit && jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com"});</script> -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1656750-34', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

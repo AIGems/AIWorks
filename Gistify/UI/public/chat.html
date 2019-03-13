@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/chat.js"></script>
+    <link href="assets/css/mystyle.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+
+  <body class="scroll-Yaxis">
+    <!-- <div class="page_cont"> -->
+
+    <div class="chat-main-div">
+      <div id="chat_widget_container_id_1" class="chat_widget_container container-chat-borderStyle">
+        <div id="chat_conversation_01" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.PNG" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Welcome to G-Mobile. How may I help you?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_02" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">
+                I received a text informing my outstanding bill.<br />I would
+                like to know the break-up of my bill.
+              </td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_03" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                May I have your mobile number?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_04" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">9812345678</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_05" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Here are the details:<br />Rent: $50, Excess Data: $8.3, Tax:
+                $2.2, Total: $60.5<br />Would you like to pay now?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_06" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">No</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_07" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Is there anything else that I can help you with?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_08" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td id="chat_conversation_08_conversation_cont_right" class="conversation_cont_right">
+                I would like to change my plan as I tend to use more data. I
+                also called customer care this morning about the same and it was
+                a frustrating wait for 20 minutes, so I had to hang up.
+              </td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_09" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Are you looking for a plan with more data?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_10" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">yes</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_11" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                What is your minimum data requirement per day?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_12" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">2 GB</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_13" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Your current plan has unlimited voice. Would you like to change
+                it?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_14" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">No</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_15" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Your current plan has 100 SMS per day. Would you like to change
+                it?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_16" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">No</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_17" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Here is the best plan that meets your requirements:<br />
+                Plan: Freedom-80 Voice: Unlimited SMS: 100 per day Data: 3 GB
+                per day Rent: $80
+                <br />Would you like to switch to this plan?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_18" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td class="conversation_cont_right">No</td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_19" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Is there anything else that I can help you with?
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_20" class="chat_conversation_right">
+          <table class="conversation_table r_float">
+            <tr>
+              <td id="chat_conversation_20_conversation_cont_right" class="conversation_cont_right">
+                The suggested plan is too costly. T-Mobile offers more data for
+                much cheaper cost.
+              </td>
+              <td class="conv_indicator_cont_right l_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_right"
+                />
+              </td>
+              <td class="chat_img_cont">
+                <img
+                  src="assets/img/wwe-customer-icon.png"
+                  alt="bot"
+                  class="img_round_64"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="chat_conversation_21" class="chat_conversation_left">
+          <table class="conversation_table l_float">
+            <tr>
+              <td class="chat_img_cont">
+                <img src="assets/img/wwe-agent-icon.png" alt="bot" class="img_round_64" />
+              </td>
+              <td class="conv_indicator_cont_left r_float">
+                <img
+                  src="assets/img/triangle.png"
+                  alt=""
+                  class="conv_indicator_left"
+                />
+              </td>
+              <td class="conversation_cont_left">
+                Please wait while I transfer you to our customer service
+                representative.
+              </td>
+            </tr>
+          </table>
+        </div>
+	  </div>
+	  <div>
+		<input id="message-reply-box" class="form-control" name="text" placeholder="Write something..." aria-hidden="true" />
+		<button
+		class="wwe-send-button"
+		onclick='agentReply("message-reply-box");scrollDown()'
+		>
+		Send
+		</button>
+	  </div>
+
+	  <table><tr><td></td></tr></table>
+	  <table><tr><td></td></tr></table>
+
+	  <table class="gistify_table">
+          <div id="acw_notes">
+            <tr>
+              <td class="gistify_sub_header_cont">
+                <label><b>Notes</b><br/></label>
+              </td>
+			</tr>
+			<tr>
+              <td>
+                <textarea id="acw" class="form-control-acw">
+The plan is too costly and I am frustrated. Even operators like T-Mobile are offering better plans.</textarea
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="gistify_sub_header_cont" colspan="4">
+                <button
+                  class="button_notes button4_notes"
+                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'
+                >
+                  Submit
+                </button>
+              </td>
+            </tr>
+          </div>
+        </table>
+    </div>
+
+    <!-- <div id="chat_widget_container_id" class="chat_widget_container"> -->
+
+    <!-- </div> -->
+
+    <!-- <div id="gistify_conversation_cont_id" class="gistify_conversation_cont"> -->
+    <!-- <table class="gistify_table"> -->
+    <div class="container-rightpanel-borderStyle">
+      <div id="gistify_conversation_cont_id" class="gistify_conversation_cont">
+        <table class="gistify_table">
+          <tr>
+            <td class="gistify_sub_header_cont">
+              <img
+                src="assets/img/handshake.png"
+                class="intent_img"
+              />&nbsp;Handoff Reason
+            </td>
+            <td class="gistify_sub_header_text" colspan="3">
+              <h3>Unrecognized Customer Utterance</h3>
+            </td>
+          </tr>
+          <!--
+  <tr><td colspan="4" class="gistify_tbl_space"></td></tr>
+  <tr><td colspan="4" class="gistify_tbl_space_box"></td></tr> -->
+          <td></td>
+          <td class="gistify_sub_header_text">
+            <i>80 bucks?...T-Mobile offers much cheaper plans.</i>
+          </td>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+          <tr>
+            <td class="gistify_sub_header_cont">
+              <img
+                src="assets/img/customer_intent.png"
+                class="intent_img"
+              />&nbsp;Customer Intent
+            </td>
+            <td class="gistify_sub_header_text"><h3>Change Plan</h3></td>
+          </tr>
+          <td></td>
+          <td class="gistify_sub_header_text"><i>Customer is looking for unlimited data</i></td>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+          <tr>
+            <td class="gistify_sub_header_cont">
+              <img
+                src="assets/img/bot_action.png"
+                class="intent_img"
+              />&nbsp;Bot Action
+            </td>
+            <td class="gistify_sub_header_text"><h3>Show Plan</h3></td>
+          </tr>
+
+          <td></td>
+          <td><i>Freedom-80 plan</i></td>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+          <tr>
+            <td class="gistify_sub_header_cont">
+              Actionable Signals Detected
+            </td>
+            <td colspan="3">
+              <!--button class="actionable_signals" onclick="selectConversation('chat_conversation_20_conversation_cont_right')"-->
+                <button class="actionable_signals" onclick="clickAnyWhere('chat_conversation_20_conversation_cont_right')">
+                Competitor Mention
+              </button>
+              <button class="actionable_signals" onclick="clickAnyWhere('chat_conversation_08_conversation_cont_right')">
+                Previous Interaction Referred
+              </button>
+              <button class="actionable_signals">
+                Negative Sentiment
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+        </table>
+
+        <!-- starting timeline -->
+
+                <table class="gistify_table">
+                  <tr>
+                    <td class="gistify_read_more">
+                      <label
+                        id="gistify_read_more_label_id"
+                        class="gistify_read_more_label"
+                        onclick="readChat();">
+                        <h3>
+                          Show Timeline >>
+                        </h3></label>
+                    </td>
+                  </tr>
+                </table>
+
+                <div id="chat_gistify_timeline_view" class="chat_gistify_timeline_view">
+                  <table class="spacing_0 timeline_tbl" align="center">
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class="timeline_center_line"><br /><br />|<br />|<br /></td>
+                      <td class="">------------</td>
+                      <td class="v_top">
+                        <div class="timeline_cust_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">Change plan</td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont">
+                                <img
+                                  class="sentiment_emoji"
+                                  src="assets/img/smileys/angry.png"
+                                  title="Angry"
+                                />
+                                <img
+                                  class="sentiment_emoji"
+                                  src="assets/img/smileys/leave.png"
+                                />
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="timeline_agent_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">
+                                Confirm change plan
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont"></td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                      <td>------------</td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="timeline_agent_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">Show plan</td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont"></td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                      <td>------------</td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td>------------</td>
+                      <td>
+                        <div class="timeline_cust_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">Change plan</td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont">
+                                <img
+                                  class="sentiment_emoji"
+                                  src="assets/img/smileys/angry.png"
+                                />
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="timeline_agent_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">Confirm payment</td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont"></td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                      <td>------------</td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="timeline_agent_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">
+                                Show bill details
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont">
+                                <img
+                                  class="sentiment_emoji"
+                                  src="assets/img/smileys/smile.png"
+                                />
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                      <td>------------</td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class="timeline_center_line">|<br />|<br /><br /><br /></td>
+                      <td class="">------------</td>
+                      <td class="v_bottom">
+                        <div class="timeline_cust_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">Bill details</td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont">
+                                <img
+                                  class="sentiment_emoji"
+                                  src="assets/img/smileys/smile.png"
+                                />
+                                <img
+                                  class="sentiment_emoji"
+                                  src="assets/img/smileys/wink.png"
+                                />
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+        <!-- Below timeline -->
+        <table class="gistify_table">
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+        </table>
+
+        <table class="gistify_table">
+          <tr>
+            <td class="gistify_sub_header_cont">Suggested Actions</td>
+            <td class="gistify_sub_header_text" colspan="3">
+              <div class="suggested_action">
+                <button id = "button1_sug_action" class="button button1_sug_action" onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'We can increase your free daily data limit to 1 GB')">
+                    Increase Free Data Limit
+                </button>
+            		<button class="button button2_sug_action"  onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'Being our valuable customer, we would like to offer you a discount of 30% on your bill for the next 6 months')">
+            				 Offer Bill Discount
+            		 </button>
+            		 <button class="button button3_sug_action" onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'Would you be interested to top-up your data plan with our new ‘Flexi data pack’?')">
+            				 Advise Data Pack
+            			</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+
+          <tr>
+            <td class="gistify_sub_header_cont">Suggested Response</td>
+            <td class="gistify_sub_header_text" colspan="3">
+              <div id="suggested_response_new" class="suggested_response_new">
+                We can increase your free daily data limit to 1 GB
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <button type="button" class="button button4" onclick="copyNotes('acw');copyResponse('message-reply-box')">
+                Copy Response
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+        </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
