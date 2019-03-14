@@ -139,7 +139,7 @@ body{
 }
 
 .img_round_64{
-	width: 30px;
+	width: 35px;
 	height: 30px;
 	padding-right: px;
 	border-radius: 32px;
@@ -379,9 +379,19 @@ table.spacing_0 td{
 }
 
 .button4 {
-  background-color: white;
-  color: black;
-  border: 2px solid #e7e7e7#2A60C8;
+	display: inline-block;
+	padding: 6px 6px;
+	font-size: 12px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #2E69DB;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 1px #999;
+
 }
 
 .button4_notes {
@@ -397,7 +407,7 @@ table.spacing_0 td{
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #444A52;
+  background-color: #2E69DB;
   border: none;
   border-radius: 5px;
   box-shadow: 0 1px #999;
