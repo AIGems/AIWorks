@@ -1,5 +1,5 @@
 body{
-	font-family: roboto, verdana, tahoma;
+	font-family: roboto;
 	font-size: 12px;
 	background-color: #fcfcfc;
 }
@@ -51,7 +51,7 @@ body{
 	text-align: left;
 	font-size: 15px;
 	font-weight: bold;
-	/* width: 40%; */
+	width: 240px;
 }
 
 .gistify_sub_header_text{
@@ -450,6 +450,8 @@ table.spacing_0 td{
   border: 2px solid #2A60C8;
 	padding: 2px 5px;
   background: linear-gradient(#fff, #fff, #fff);
+	width: 350px;
+	height: 35px;
 	/* display: none; */
 }
 
@@ -498,7 +500,7 @@ div.container-rightpanel-borderStyle {
 	border: 1px solid #dae1e8;
 	border-radius: 2px;
 	margin-top: 10px;
-	width: 500px;
+	width: 700px;
 }
 div.chat-main-div {
 	display: inline-block;
