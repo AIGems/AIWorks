@@ -22,7 +22,7 @@ body{
 }
 
 .gistify_table{
-	/*width: 800px;*/
+	/* width: 50%; */
 	border-collapse: collapse;
 	border-spacing: 0;
 	color: #3d464d;
@@ -91,7 +91,7 @@ body{
 
 .chat_gistify_timeline_view{
 	display: none;
-	width: 50%;
+	width: 100%;
 	/* float: left; */
 }
 
@@ -288,7 +288,7 @@ table.spacing_0 td{
 	margin-left: 5px;
 	margin-top: -20px;
 	background-color: #ffd9b3;
-	position: absolute;
+	position: relative;
 	cursor: pointer;
 	display: none;
 	text-align: left;

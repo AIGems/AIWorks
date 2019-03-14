@@ -471,30 +471,45 @@ Released under the MIT license: http://jsbin.mit-license.org
               <td class="gistify_sub_header_cont">
                 <label><b>Notes</b><br/></label>
               </td>
-      </tr>
-      <tr>
-              <td>
-                <textarea id="acw" class="form-control-acw">
-    The plan is too costly and I am frustrated. Even operators like T-Mobile are offering better plans.</textarea
-                >
-              </td>
             </tr>
             <tr>
-              <td class="gistify_sub_header_cont" colspan="4">
-                <button
-                  class="button_notes button4_notes"
-                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'
+              <td>
+                <textarea id="acw" class="form-control-acw">
+                </textarea
                 >
-                  Submit
+              </td>
+              <td class="gistify_sub_header_cont">
+                <button style="padding-bottom: 20px;padding-top:20px;padding-left:80px;padding-right:80px;height:50%;width:30%auto;font-size:25px" class = "wwe-send-button" onclick="location.href='chat.html';">
+                  <marquee behavior="scroll" direction="left">Gistify</marquee>
                 </button>
               </td>
             </tr>
+
+
           </div>
         </table>
+      </br>
+        <table class="gistify_table">
+              <div id="acw_notes">
+
+                <tr>
+                  <td class="gistify_sub_header_cont">
+                    <button
+                      class="wwe-send-button"
+                      onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'>
+                      Save
+                    </button>
+                  </td>
+                </tr>
+
+              </div>
+            </table>
+
+
     </div>
 
-  </br>
-    <button class="k-button" id="open" backgroundColor="black"><font color="orange">WWE V9.0</font></button>
+    </br>
+
   </body>
 
 <script>
@@ -539,6 +554,8 @@ ga('create', 'UA-1656750-34', 'auto');
 ga('require', 'linkid', 'linkid.js');
 ga('require', 'displayfeatures');
 ga('send', 'pageview');
+
+
 
 </script>
 
