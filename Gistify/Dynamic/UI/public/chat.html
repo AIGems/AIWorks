@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/chat.js"></script>
+    <link href="assets/css/mystyle.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+
+  <body class="scroll-Yaxis">
+    <!-- <div class="page_cont"> -->
+
+    <div class="chat-main-div">
+      <div id="chat_widget_container_id" class="chat_widget_container container-chat-borderStyle">
+
+	  </div>
+
+	  <div>
+		<input id="message-reply-box" class="form-control" name="text" placeholder="Write something..." aria-hidden="true" />
+		<button
+		class="wwe-send-button"
+		onclick='agentReply("message-reply-box");scrollDown()'
+		>
+		Send
+		</button>
+	  </div>
+
+	  <table><tr><td></td></tr></table>
+	  <table><tr><td></td></tr></table>
+
+	  <table class="gistify_table">
+          <div id="acw_notes">
+            <tr>
+              <td class="gistify_sub_header_cont">
+                <label><b>Notes</b><br/></label>
+              </td>
+			</tr>
+			<tr>
+              <td>
+                <textarea id="acw" class="form-control-acw">Customer intent was Plan Change (more data). Bot showed Freedom-80 plan. Bot handoff due to unrecognized utterance ("80 bucks?...T-Mobile offers much cheaper plans"). </textarea>
+              </td>
+            </tr>
+            <tr>
+              <td class="gistify_sub_header_cont" colspan="4">
+                <button
+                  class="button_notes button4_notes"
+                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'
+                >
+                  Save
+                </button>
+              </td>
+            </tr>
+          </div>
+        </table>
+    </div>
+
+
+    <div class="container-rightpanel-borderStyle">
+      <div id="gistify_conversation_cont_id" class="gistify_conversation_cont">
+        <table class="gistify_table">
+          <tr>
+            <td class="gistify_sub_header_cont">
+              <img
+                src="assets/img/handshake.png"
+                class="intent_img"
+              />&nbsp;Handoff Reason
+            </td>
+            <td class="gistify_sub_header_text" colspan="3">
+              <h3>Unrecognized Customer Utterance</h3>
+            </td>
+          </tr>
+
+          <td></td>
+          <td id="handoff" class="gistify_sub_header_text">
+            <i>70 bucks?...T-Mobile offers much cheaper plans.</i>
+          </td>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+          <tr>
+            <td class="gistify_sub_header_cont">
+              <img
+                src="assets/img/customer_intent.png"
+                class="intent_img"
+              />&nbsp;Customer Intent
+            </td>
+            <td id="handoff_intent" class="gistify_sub_header_text"><h3>Changes Plan</h3></td>
+          </tr>
+          <td></td>
+          <td class="gistify_sub_header_text"><i>Unlimited data</i></td>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+          <tr>
+            <td class="gistify_sub_header_cont">
+              <img
+                src="assets/img/bot_action.png"
+                class="intent_img"
+              />&nbsp;Bot Action
+            </td>
+            <td id="handoff_action" class="gistify_sub_header_text"><h3>Show Plans</h3></td>
+          </tr>
+
+          <td></td>
+          <td><i>Freedom-80</i></td>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+          <tr>
+            <td class="gistify_sub_header_cont">
+              Actionable Signals Detected
+            </td>
+            <td colspan="3">
+                <button class="actionable_signals" onclick="clickAnyWhere('chat_conversation_18_conversation_cont_right')">
+                Competitor Mention
+              </button>
+              <button class="actionable_signals" onclick="clickAnyWhere('chat_conversation_08_conversation_cont_right')">
+                Previous Interaction Referred
+              </button>
+              <button class="actionable_signals" onclick="clickAnyWhere('chat_conversation_08_conversation_cont_right')">
+                Negative Sentiment
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+        </table>
+
+        <!-- starting timeline -->
+
+                <table class="gistify_table">
+                  <tr>
+                    <td class="gistify_read_more">
+                      <label
+                        id="gistify_read_more_label_id"
+                        class="gistify_read_more_label"
+                        onclick="readChat();">
+                        <h3>
+                          Show Timeline >>
+                        </h3></label>
+                    </td>
+                  </tr>
+                </table>
+
+                <div id="chat_gistify_timeline_view" class="chat_gistify_timeline_view">
+                  
+                </div>
+
+        <!-- Below timeline -->
+        <table class="gistify_table">
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+        </table>
+
+        <table class="gistify_table">
+          <tr>
+            <td class="gistify_sub_header_cont">Suggested Actions</td>
+            <td class="gistify_sub_header_text" colspan="3">
+              <div class="suggested_action">
+                <button id = "button1_sug_action" class="button button1_sug_action" onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'We can increase your free daily data limit to 1 GB')">
+                    Increase Free Data Limit
+                </button>
+            		<button class="button button2_sug_action"  onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'Being our valuable customer, we would like to offer you a discount of 30% on your bill for the next 6 months')">
+            				 Offer Bill Discount
+            		 </button>
+            		 <button class="button button3_sug_action" onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'Would you be interested to top-up your data plan with our new ‘Flexi data pack’?')">
+            				 Advise Data Pack
+            			</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+
+          <tr>
+            <td class="gistify_sub_header_cont">Suggested Response</td>
+            <td class="gistify_sub_header_text" colspan="3">
+              <div id="suggested_response_new" class="suggested_response_new">
+                We can increase your free daily data limit to 1 GB
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <button type="button" class="button button4" onclick="copyNotes('acw');copyResponse('message-reply-box')">
+                Use Response
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+        </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
