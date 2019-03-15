@@ -80,6 +80,13 @@ body{
 	color: #3d464d;
 }
 
+.gistify_timeline_heading{
+	font-size: 16px;
+	font-family: roboto;
+	cursor: pointer;
+	color: #2A60C8;
+}
+
 .gistify_text{
 	color: #3d464d;
 }
@@ -140,6 +147,13 @@ body{
 
 .img_round_64{
 	width: 35px;
+	height: 30px;
+	padding-right: px;
+	border-radius: 32px;
+}
+
+.img_round_customer_churn{
+	width: 30px;
 	height: 30px;
 	padding-right: px;
 	border-radius: 32px;
