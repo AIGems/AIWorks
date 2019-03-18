@@ -411,8 +411,8 @@
         </div>
 	  </div>
 
-    <div class="gistify_text" style="float:right;margin:auto 9px">
-      <h3>Gistify</h3>
+    <div class="gistify_text">
+      Gistify
     </div>
 
     <div class="toggle-switch" style="float:right;">
@@ -427,7 +427,7 @@
 		<input id="message-reply-box" class="form-control" name="text" placeholder="Write something..." aria-hidden="true" />
 		<button
 		class="wwe-send-button"
-		onclick='agentReply("message-reply-box");scrollDown()'
+		onclick='agentReply("message-reply-box");copyNotes("acw");scrollDown()'
 		>
 		Send
 		</button>
@@ -436,30 +436,29 @@
 	  <table><tr><td></td></tr></table>
 	  <table><tr><td></td></tr></table>
 
-	  <table class="gistify_table">
+
           <div id="acw_notes">
+            <table class="gistify_table">
             <tr>
               <td class="gistify_sub_header_cont">
                 <label><b>Notes</b><br/></label>
               </td>
-			</tr>
-			<tr>
+			      </tr>
+			      <tr>
               <td class="gistify_sub_header_cont">
                 <textarea id="acw" class="form-control-acw">Customer intent was Plan Change (more data). Bot showed Freedom-80 plan. Bot handoff due to unrecognized utterance ("80 bucks?...T-Mobile offers much cheaper plans"). </textarea>
               </td>
             </tr>
             <tr>
               <td class="gistify_sub_header_cont" colspan="4">
-                <button
-                  class="button_notes button4_notes"
-                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'
-                >
+                <button class="button_notes button4_notes" onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'>
                   Save
                 </button>
               </td>
             </tr>
+            </table>
           </div>
-        </table>
+
     </div>
 
 
@@ -642,24 +641,6 @@
                       <td colspan="2"></td>
                     </tr>
 
-                    <!-- <tr>
-                      <td>
-                        <div class="timeline_cust_conv_cont">
-                          <table class="timeline_conv_tbl">
-                            <tr>
-                              <td class="timeline_conv_td_subject">Bill Details.Bill Payment-No</td>
-                            </tr>
-                            <tr>
-                              <td class="sentiment_img_cont"></td>
-                            </tr>
-                          </table>
-                        </div>
-                      </td>
-                      <td>------------</td>
-                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
-                      <td></td>
-                      <td></td>
-                    </tr> -->
                     <tr>
                       <td colspan="2"></td>
                       <td>|</td>
@@ -743,19 +724,6 @@
 
                     <tr>
                       <td>
-                        <!-- <div class="timeline_agent_conv_cont">
-                          <table id="timeline_expandale_id_02" class="timeline_conv_tbl" onclick="toggleConv('timeline_expandale_id_02', 'timeline_overlay_cont_id_02');">
-                            <tr>
-                              <td class="timeline_conv_td_subject">Show Plan</td>
-                            </tr>
-                            <tr>
-                              <td class="sentiment_img_cont"></td>
-                            </tr>
-                          </table>
-                          <div id="timeline_overlay_cont_id_02" class="timeline_overlay_cont">
-                              Plan: Freedom-80</br> Voice: Unlimited</br> SMS: 100 per day</br> Data: 3 GB per day</br> Rent: $80
-                            </div>
-                        </div> -->
 
                         <div class="timeline_agent_conv_cont">
                           <table id="timeline_expandale_id_02" class="timeline_conv_tbl" onclick="toggleConv('timeline_expandale_id_02', 'timeline_overlay_cont_id_02');">
@@ -770,7 +738,7 @@
                           </table>
                           <div id="timeline_overlay_cont_id_02" class="timeline_overlay_cont">
                               Plan: Freedom-80</br> Voice: Unlimited</br> SMS: 100 per day</br> Data: 3 GB per day</br> Rent: $80
-                            </div>
+                          </div>
                         </div>
                       </td>
                       <td>------------</td>
@@ -827,27 +795,6 @@
                         </div>
                       </td>
                     </tr>
-
-                    <!-- <tr>
-                      <td>
-                        <div class="timeline_agent_conv_cont">
-                          <table class="timeline_conv_tbl">
-                            <tr>
-                              <td class="timeline_conv_td_subject">
-                                Default FallBack Intent
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="sentiment_img_cont"></td>
-                            </tr>
-                          </table>
-                        </div>
-                      </td>
-                      <td>------------</td>
-                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
-                      <td></td>
-                      <td></td>
-                    </tr> -->
 
                     <tr>
                       <td colspan="2"></td>
@@ -935,8 +882,9 @@
           <tr>
             <td></td>
             <td>
-              <button type="button" class="button button4" onclick="copyNotes('acw');copyResponse('message-reply-box')">
-                Use Response
+              <button type="button" class="button button4" onclick="copyResponse('message-reply-box')">
+                <!-- <button type="button" class="button button4" onclick="copyNotes('acw');copyResponse('message-reply-box')"> -->
+                  Use Response
               </button>
             </td>
           </tr>
