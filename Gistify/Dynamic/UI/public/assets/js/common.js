@@ -20,3 +20,20 @@ function toggleConv(src, dest){
 		destObj.show(animation_speed_chat_toggle);
 	}
 }
+
+
+function ajaxPop()
+{
+    $(this).speedoPopup(
+    {
+        width:550,
+        height:265,
+        useFrame: TRUE,
+        href: '#chat_gistify_timeline_view'
+    });
+}
+
+function myfunction() {
+	window.open(
+		'http://localhost:8081/gistify.html','popUpWindow','height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+}
