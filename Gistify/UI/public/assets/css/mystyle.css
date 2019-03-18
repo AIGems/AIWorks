@@ -349,10 +349,10 @@ table.spacing_0 td{
 	font-family: roboto;
 	margin: 5px;
 	border-radius: 9px;
-  color: #FDFDFD;
-  border: 1px solid #5d5d5d;
+  color: #4f5964;
+  border: 1px solid #cacaca;
 	padding: 2px 4px;
-  background: linear-gradient(#5d5d5d, #6a6a6a, #5d5d5d);
+  background: linear-gradient(#f7f8f9, #f7f8f9, #f7f8f9);
 	display: inline-block;
 }
 .actionable_signals:hover {
