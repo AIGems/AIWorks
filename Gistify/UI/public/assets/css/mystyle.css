@@ -1,6 +1,6 @@
 body{
 	font-family: roboto;
-	font-size: 12px;
+	font-size: 14px;
 	background-color: #fcfcfc;
 }
 .chat_widget_container_id{
@@ -56,7 +56,7 @@ body{
 
 .gistify_sub_header_text{
 	text-align: left;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 
@@ -75,7 +75,7 @@ body{
 }
 
 .gistify_read_more_label{
-	font-size: 12px;
+	font-size: 14px;
 	cursor: pointer;
 	color: #3d464d;
 }
@@ -92,7 +92,7 @@ body{
 }
 
 .gistify_sub_header{
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: bold;
 }
 
@@ -300,9 +300,9 @@ table.spacing_0 td{
 	padding: 10px;
 	margin-right: 15px;
 	margin-left: 5px;
-	margin-top: -20px;
+	margin-top: -15px;
 	background-color: #ffd9b3;
-	position: relative;
+	position: absolute;
 	cursor: pointer;
 	display: none;
 	text-align: left;
@@ -318,7 +318,7 @@ table.spacing_0 td{
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
 	font-family: roboto;
   margin: 4px 2px;
   -webkit-transition-duration: 0.4s; /* Safari */
@@ -336,7 +336,7 @@ table.spacing_0 td{
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 12px;
+	font-size: 14px;
 	font-family: roboto;
 	margin: 4px 2px;
 	-webkit-transition-duration: 0.4s; /* Safari */
@@ -345,7 +345,7 @@ table.spacing_0 td{
 }
 
 .actionable_signals{
-	font-size: 12px;
+	font-size: 14px;
 	font-family: roboto;
 	margin: 5px;
 	border-radius: 9px;
@@ -362,7 +362,7 @@ table.spacing_0 td{
 }
 
 .button1_sug_action {
-	font-size: 12px;
+	font-size: 14px;
 	color: #fff;
   background-color: #FF4F1F;
   border: 2px solid 	#FF4F1F;
@@ -370,7 +370,7 @@ table.spacing_0 td{
 }
 
 .button2_sug_action {
-	font-size: 12px;
+	font-size: 14px;
   color: #000;
 	background-color: #fff;
 	border: 2px solid #FF4F1F;
@@ -378,7 +378,7 @@ table.spacing_0 td{
 }
 
 .button3_sug_action {
-	font-size: 12px;
+	font-size: 14px;
   color: #000;
 	background-color: #fff;
 	border: 2px solid #FF4F1F;
@@ -386,7 +386,7 @@ table.spacing_0 td{
 }
 
 .copy_response {
-	font-size: 12px;
+	font-size: 14px;
   color: #fff;
 	background-color: #555D66;
 	/* border: 2px solid #000; */
@@ -396,7 +396,7 @@ table.spacing_0 td{
 .button4 {
 	display: inline-block;
 	padding: 6px 6px;
-	font-size: 12px;
+	font-size: 14px;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
@@ -416,7 +416,7 @@ table.spacing_0 td{
   margin-top: 1%;
   display: inline-block;
   padding: 5px 0px;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -440,14 +440,14 @@ table.spacing_0 td{
 }
 
 .suggested_action {
-	font-size: 12px;
+	font-size: 14px;
 	font-family: roboto;
 	color: #FDFDFD;
   display: inline-block;
 }
 
 .suggested_response {
-	font-size: 12px;
+	font-size: 14px;
 	font-family: roboto;
 	border-radius: 9px;
   color: #000;
@@ -458,7 +458,7 @@ table.spacing_0 td{
 }
 
 .suggested_response_new {
-	font-size: 12px;
+	font-size: 14px;
 	font-family: roboto;
 	border-radius: 9px;
   color: #2A60C8;
@@ -492,7 +492,7 @@ div.container-rightpanel-borderStyle {
 	display: block;
 	height: 35px;
 	padding: 4px 12px;
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 1.66666667;
 	color: #444a52;
 	background-color: #fdfdfd;
@@ -506,7 +506,7 @@ div.container-rightpanel-borderStyle {
 	display: block;
 	height: 100px;
 	padding: 4px 12px;
-	font-size: 12px;
+	font-size: 14px;
 	font-family: roboto;
 	line-height: 1.66666667;
 	color: #444a52;
@@ -536,7 +536,7 @@ div.send-icon {
   margin-top: -4.5%;
   display: inline-block;
   padding: 6px 6px;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -558,4 +558,130 @@ div.send-icon {
 
 .selectingConversation {
 	background-color: #FFBF00
+}
+
+.toggle-switch {
+  position: relative;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.toggle-switch:hover .toggle-switch-label,
+.toggle-switch:hover .toggle-switch-switch {
+  border-color: #dae1e8;
+  outline: 0;
+  box-shadow: 0 0 2px #dae1e8;
+}
+.toggle-switch:hover .toggle-switch-checkbox:checked + .toggle-switch-label,
+.toggle-switch:hover .toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-switch {
+  border-color: #2e69db;
+  outline: 0;
+  box-shadow: 0 0 2px #2e69db;
+}
+.toggle-switch-checkbox {
+  display: none;
+}
+.toggle-switch-label {
+  display: block;
+  width: 32px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #c4cdd6;
+  border-radius: 16px;
+}
+.toggle-switch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin .3s ease-in 0s;
+}
+.toggle-switch-inner:before,
+.toggle-switch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 14px;
+  box-sizing: border-box;
+  padding: 0;
+  line-height: 14px;
+  color: #fdfdfd;
+}
+.toggle-switch-inner:before {
+  padding-left: 10px;
+  color: #fdfdfd;
+  content: "";
+  background-color: #2e69db;
+}
+.toggle-switch-inner:after {
+  padding-right: 10px;
+  color: #fdfdfd;
+  text-align: right;
+  content: "";
+  background-color: #c4cdd6;
+}
+.toggle-switch-switch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 18px;
+  height: 14px;
+  margin: 0;
+  background: #fdfdfd;
+  border: 1px solid #c4cdd6;
+  border-radius: 16px;
+  transition: all .2s ease-in 0s;
+}
+.toggle-switch-switch > .fonticon {
+  position: relative;
+  bottom: 2px;
+  left: 3px;
+  font-size: 14px;
+  color: #2e69db;
+}
+.toggle-switch-switch > .toggle-switch-on-icon {
+  display: none;
+  color: #2e69db;
+}
+.toggle-switch-switch > .toggle-switch-off-icon {
+  display: inline;
+  color: #c4cdd6;
+}
+.toggle-switch-checkbox:checked + .toggle-switch-label {
+  border: 1px solid #2e69db;
+}
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-on-icon {
+  display: inline;
+}
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-off-icon {
+  display: none;
+}
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-inner {
+  margin-left: 0;
+}
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-switch {
+  left: 14px;
+  border: 1px solid #2e69db;
+}
+.toggle-switch-label-text {
+  position: absolute;
+  top: 0;
+  left: 38px;
+}
+.toggle-switch-off-label-text {
+  display: inline;
+  font-weight: normal;
+}
+.toggle-switch-on-label-text {
+  display: none;
+  font-weight: bold;
+}
+.toggle-switch-checkbox:checked ~ .toggle-switch-label-text .toggle-switch-off-label-text {
+  display: none;
+}
+.toggle-switch-checkbox:checked ~ .toggle-switch-label-text .toggle-switch-on-label-text {
+  display: inline;
 }
