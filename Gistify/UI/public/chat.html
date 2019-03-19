@@ -4,11 +4,14 @@
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/chat.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- <script src="assets/js/jquery.min_2.0.3.js"></script> -->
     <link href="assets/css/mystyle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- <link href="assets/css/font.css" rel="stylesheet" type="text/css" /> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   </head>
 
   <body class="scroll-Yaxis">
@@ -452,7 +455,7 @@
             </tr>
             <tr>
               <td class="notes_sub_header_cont" colspan="4">
-                <button class="button_notes button4_notes" onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"notes_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'>
+                <button class="button_notes button4_notes" onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"notes_sub_header_cont\"><b>Notes Submitted Successfully</b></td></tr></table>")'>
                   Save
                 </button>
               </td>
@@ -654,247 +657,6 @@
 					</ul>
 				</div>
 
-                <div id="chat_gistify_timeline_view" class="chat_gistify_timeline_view">
-                  <table class="spacing_0 timeline_tbl" align="center">
-					<tr>
-						<td class="gistify_timeline_heading">Bot Action</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td class="gistify_timeline_heading">Customer Intent</td>
-					</tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td class="timeline_center_line"><br /><br />|<br />|<br /></td>
-                      <td class="">------------</td>
-                      <td class="v_top">
-                        <div class="timeline_cust_conv_cont">
-                          <table class="timeline_conv_tbl">
-                            <tr>
-                              <td class="timeline_conv_td_subject">Bill Details</td>
-
-                          </table>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <div class="timeline_agent_conv_cont">
-                          <table id="timeline_expandale_id_01" class="timeline_conv_tbl" onclick="toggleConv('timeline_expandale_id_01', 'timeline_overlay_cont_id_01');">
-                            <tr>
-                              <td class="timeline_conv_td_subject">
-                                Show Bill Details
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="sentiment_img_cont"></td>
-                            </tr>
-                          </table>
-                          <div id="timeline_overlay_cont_id_01" class="timeline_overlay_cont">
-                              Rent: $50</br> Excess Data: $8.3</br> Tax: $2.2</br> Total: $60.5
-                            </div>
-                        </div>
-                      </td>
-                      <td>------------</td>
-                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-
-
-
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
-                      <td class="">------------</td>
-                      <td>
-                        <div class="timeline_cust_conv_cont">
-                          <table class="timeline_conv_tbl">
-                            <tr>
-                              <td class="timeline_conv_td_subject">Confirm Payment - No</td>
-                            </tr>
-                            <tr>
-                              <td class="sentiment_img_cont"></td>
-                            </tr>
-                          </table>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
-                      <td>------------</td>
-                      <td>
-                        <div class="timeline_cust_conv_cont">
-                          <table class="timeline_conv_tbl">
-                            <tr>
-                              <td class="timeline_conv_td_subject">Change plan</td>
-							  <td>&nbsp;</td>
-							  <td>&nbsp;</td>
-							  <td>
-								<img src="assets/img/AngryEmoji.png" alt="bot" class="img_round_customer_churn" />
-							  </td>
-							  <td>&nbsp;</td>
-							  <td>&nbsp;</td>
-							  <td>
-								<img src="assets/img/previous-ixn.PNG" alt="bot" class="img_round_customer_churn" />
-							  </td>
-                            </tr>
-                            <tr>
-                              <td class="sentiment_img_cont"></td>
-                            </tr>
-                          </table>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-
-                    <tr>
-                      <td>
-
-                        <div class="timeline_agent_conv_cont">
-                          <table id="timeline_expandale_id_02" class="timeline_conv_tbl" onclick="toggleConv('timeline_expandale_id_02', 'timeline_overlay_cont_id_02');">
-                            <tr>
-                              <td class="timeline_conv_td_subject">
-                                Show Plan
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="sentiment_img_cont"></td>
-                            </tr>
-                          </table>
-                          <div id="timeline_overlay_cont_id_02" class="timeline_overlay_cont">
-                              Plan: Freedom-80</br> Voice: Unlimited</br> SMS: 100 per day</br> Data: 3 GB per day</br> Rent: $80
-                          </div>
-                        </div>
-                      </td>
-                      <td>------------</td>
-                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
-                      <td class="">------------</td>
-                      <td>
-                        <div class="timeline_cust_conv_cont">
-                          <table id="timeline_expandale_id_03" class="timeline_conv_tbl" onclick="toggleConv('timeline_expandale_id_03', 'timeline_overlay_cont_id_03');">
-                            <tr>
-                              <td class="timeline_conv_td_subject">Unrecognized Utterance</td>
-							  <td>&nbsp;</td>
-							  <td>&nbsp;</td>
-							  <td>
-								<img src="assets/img/smileys/leave.PNG" alt="bot" class="img_round_customer_churn" />
-							  </td>
-                            </tr>
-                            <tr>
-                              <td class="sentiment_img_cont"></td>
-                            </tr>
-                          </table>
-                          <div id="timeline_overlay_cont_id_03" class="timeline_overlay_cont">
-                              80 bucks?...T-Mobile offers much cheaper plans.
-                            </div>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <!-- <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td>|</td>
-                      <td colspan="2"></td>
-                    </tr> -->
-
-                  </table>
-                </div>
 
         <!-- Below timeline -->
         <table class="gistify_table">
