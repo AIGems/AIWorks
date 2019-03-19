@@ -693,6 +693,10 @@ div.send-icon {
   display: inline;
 }
 
+.container {
+  display:none
+}
+
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
@@ -706,6 +710,7 @@ div.send-icon {
   width: 3px;
   background-color: #eeeeee;
   left: 30%;
+  right: 0;
   margin-left: -1.5px;
 }
 .timeline > li {
@@ -780,6 +785,7 @@ div.send-icon {
 }
 .timeline > li.timeline-inverted > .timeline-panel {
   float: right;
+  right: 40%
 }
 .timeline > li.timeline-inverted > .timeline-panel:before {
   border-left-width: 0;
