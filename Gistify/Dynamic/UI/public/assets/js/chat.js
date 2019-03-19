@@ -31,7 +31,7 @@ $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 	console.log(response);
 	console.log(response['intents']);
-	str='<table width="65%"><tr><th width="25%">Bot Action</th><th width="25%">Customer Intent</th></tr></table><ul class="timeline">'
+	str='<table width="70%"><tr><th width="35%">Bot Action</th><th width="35%">Customer Intent</th></tr></table><ul class="timeline">'
 	var dict = { "Bill Details" : "white.jpg","Change Plan": "angry.png", "Bill Payment No": "white.jpg","Bill Payment Yes": "white.jpg", "Bill Payment": "white.jpg", "Default Fallback Intent"  : "white.jpg"};
 	var churn_dict = { "Bill Details" : "white.jpg","Change Plan": "white.jpg", "Bill Payment No": "white.jpg","Bill Payment Yes": "white.jpg", "Bill Payment": "white.jpg", "Default Fallback Intent"  : "white.jpg" };
 
