@@ -47,6 +47,11 @@ body{
 	width: 700px;
 }
 
+.notes_sub_header_cont{
+	text-align: left;
+	font-size: 15px;
+	width: 240px;
+}
 .gistify_sub_header_cont{
 	text-align: left;
 	font-size: 15px;
@@ -59,6 +64,14 @@ body{
 	font-size: 14px;
 }
 
+.gistify_h3_header_text{
+	text-align: left;
+	font-size: 15px;
+	font-weight: bold;
+	padding-top: 10px;
+	/* padding-right: 10px; */
+	padding-bottom: 10px;
+}
 
 .gistify_sub_header_content{
 	width: 20%;
@@ -75,7 +88,7 @@ body{
 }
 
 .gistify_read_more_label{
-	font-size: 14px;
+	font-size: 15px;
 	cursor: pointer;
 	color: #3d464d;
 }
@@ -363,9 +376,19 @@ table.spacing_0 td{
 }
 
 .actionable_signals:hover {
-  background-color: #F53131;
-	background: #F53131;
+  background-color: #FFBF00;
+	background: #FFBF00;
 	color: white;
+	border-radius: 9px;
+	border: 1px solid #cacaca;
+}
+
+.actionable_signals:click {
+  background-color: #FFBF00;
+	background: #FFBF00;
+	color: white;
+	border-radius: 9px;
+	border: 1px solid #cacaca;
 }
 
 .button1_sug_action {
@@ -473,12 +496,13 @@ table.spacing_0 td{
 	padding: 2px 5px;
   background: linear-gradient(#fff, #fff, #fff);
 	width: 350px;
-	height: 50px;
+	height: 70px;
 	/* display: none; */
 }
 
 .acw_notes {
 	width: 50%;
+	margin: 10px;
 }
 div.container-chat-borderStyle {
 	border: 1px solid #e4e9f0;
@@ -495,7 +519,7 @@ div.container-rightpanel-borderStyle {
 	width: 50%;
 	float: right;
 }
-.form-control {
+.message-reply-box {
 	display: block;
 	height: 35px;
 	padding: 4px 12px;
@@ -507,9 +531,10 @@ div.container-rightpanel-borderStyle {
 	border: 1px solid #dae1e8;
 	border-radius: 2px;
 	margin-top: 10px;
-	width: 90%;
+	margin-left: 10px;
+	width: 88%;
 }
-.form-control-acw {
+.message-reply-box-acw {
 	display: block;
 	height: 100px;
 	padding: 4px 12px;

@@ -425,7 +425,7 @@
     </div>
 
 	  <div>
-		<input id="message-reply-box" class="form-control" name="text" placeholder="Write something..." aria-hidden="true" />
+		<input id="message-reply-box" class="message-reply-box" name="text" placeholder="Write something..." aria-hidden="true" />
 		<button
 		class="wwe-send-button"
 		onclick='agentReply("message-reply-box");copyNotes("acw");scrollDown()'
@@ -438,21 +438,21 @@
 	  <table><tr><td></td></tr></table>
 
 
-          <div id="acw_notes">
+          <div id="acw_notes" class="acw_notes">
             <table class="gistify_table">
             <tr>
-              <td class="gistify_sub_header_cont">
+              <td class="notes_sub_header_cont">
                 <label><b>Notes</b><br/></label>
               </td>
 			      </tr>
 			      <tr>
-              <td class="gistify_sub_header_cont">
-                <textarea id="acw" class="form-control-acw">Customer intent was Plan Change (more data). Bot showed Freedom-80 plan. Bot handoff due to unrecognized utterance ("80 bucks?...T-Mobile offers much cheaper plans"). </textarea>
+              <td class="notes_sub_header_cont">
+                <textarea id="acw" class="message-reply-box-acw">Customer intent was Plan Change (more data). Bot showed Freedom-80 plan. Bot handoff due to unrecognized utterance ("80 bucks?...T-Mobile offers much cheaper plans"). </textarea>
               </td>
             </tr>
             <tr>
-              <td class="gistify_sub_header_cont" colspan="4">
-                <button class="button_notes button4_notes" onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'>
+              <td class="notes_sub_header_cont" colspan="4">
+                <button class="button_notes button4_notes" onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"notes_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'>
                   Save
                 </button>
               </td>
@@ -473,8 +473,8 @@
                 class="intent_img"
               />&nbsp;Handoff Reason
             </td>
-            <td class="gistify_sub_header_text" colspan="3">
-              <h3>Unrecognized Customer Utterance</h3>
+            <td class="gistify_h3_header_text" colspan="3">
+              Unrecognized Customer Utterance
             </td>
           </tr>
 
@@ -493,7 +493,7 @@
                 class="intent_img"
               />&nbsp;Customer Intent
             </td>
-            <td class="gistify_sub_header_text"><h3>Change Plan</h3></td>
+            <td class="gistify_h3_header_text">Change Plan</td>
           </tr>
           <td></td>
           <td class="gistify_sub_header_text"><i>Unlimited data</i></td>
@@ -509,7 +509,7 @@
                 class="intent_img"
               />&nbsp;Bot Action
             </td>
-            <td class="gistify_sub_header_text"><h3>Show Plan</h3></td>
+            <td class="gistify_h3_header_text">Show Plan</td>
           </tr>
 
           <td></td>
@@ -567,7 +567,7 @@
                     </td>
                   </tr>
                 </table>
-				
+
 				<div id="chat_gistify_timeline_view" class="container">
 					<!--div class="page-header">
 						<h1 id="timeline">Customer Timeline</h1>
@@ -920,7 +920,7 @@
             		<button class="button button2_sug_action"  onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'Being our valuable customer, we would like to offer you a discount of 30% on your bill for the next 6 months')">
             				 Offer Bill Discount
             		 </button>
-            		 <button class="button button3_sug_action" onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'Would you be interested to top-up your data plan with our new ‘Flexi data pack’?')">
+            		 <button class="button button3_sug_action" onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'Would you be interested to top-up your data plan with our new Flexi data pack?')">
             				 Advise Data Pack
             			</button>
               </div>
