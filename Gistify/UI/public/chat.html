@@ -411,8 +411,8 @@
         </div>
 	  </div>
 
-    <div class="gistify_text" style="float:right;margin:auto 9px">
-      <h3>Gistify</h3>
+    <div class="gistify_text">
+      Gistify
     </div>
 
     <div class="toggle-switch" style="float:right;">
@@ -427,7 +427,7 @@
 		<input id="message-reply-box" class="form-control" name="text" placeholder="Write something..." aria-hidden="true" />
 		<button
 		class="wwe-send-button"
-		onclick='agentReply("message-reply-box");scrollDown()'
+		onclick='agentReply("message-reply-box");copyNotes("acw");scrollDown()'
 		>
 		Send
 		</button>
@@ -436,36 +436,453 @@
 	  <table><tr><td></td></tr></table>
 	  <table><tr><td></td></tr></table>
 
-	  <table class="gistify_table">
+
           <div id="acw_notes">
+            <table class="gistify_table">
             <tr>
               <td class="gistify_sub_header_cont">
                 <label><b>Notes</b><br/></label>
               </td>
-			</tr>
-			<tr>
+			      </tr>
+			      <tr>
               <td class="gistify_sub_header_cont">
-                <textarea id="acw" class="form-control-acw"></textarea>
+                <textarea id="acw" class="form-control-acw">Customer intent was Plan Change (more data). Bot showed Freedom-80 plan. Bot handoff due to unrecognized utterance ("80 bucks?...T-Mobile offers much cheaper plans"). </textarea>
               </td>
             </tr>
             <tr>
               <td class="gistify_sub_header_cont" colspan="4">
-                <button
-                  class="button_notes button4_notes"
-                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'
-                >
+                <button class="button_notes button4_notes" onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'>
                   Save
                 </button>
               </td>
             </tr>
+            </table>
           </div>
-        </table>
+
     </div>
+
 
     <div class="container-rightpanel-borderStyle">
-      <meta http-equiv="refresh" content="5;url=chat.html" />
-      <img src="assets/img/ajax-loader.gif" style="float:left; margin-top: 25%; margin-left: 45%;">
-    </div>
+      <div id="gistify_conversation_cont_id" class="gistify_conversation_cont">
+        <table class="gistify_table">
+          <tr>
+            <td class="gistify_sub_header_cont">
+              <img
+                src="assets/img/handshake.png"
+                class="intent_img"
+              />&nbsp;Handoff Reason
+            </td>
+            <td class="gistify_sub_header_text" colspan="3">
+              <h3>Unrecognized Customer Utterance</h3>
+            </td>
+          </tr>
 
+          <td></td>
+          <td class="gistify_sub_header_text">
+            <i>80 bucks?...T-Mobile offers much cheaper plans.</i>
+          </td>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+          <tr>
+            <td class="gistify_sub_header_cont">
+              <img
+                src="assets/img/customer_intent.png"
+                class="intent_img"
+              />&nbsp;Customer Intent
+            </td>
+            <td class="gistify_sub_header_text"><h3>Change Plan</h3></td>
+          </tr>
+          <td></td>
+          <td class="gistify_sub_header_text"><i>Unlimited data</i></td>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+          <tr>
+            <td class="gistify_sub_header_cont">
+              <img
+                src="assets/img/bot_action.png"
+                class="intent_img"
+              />&nbsp;Bot Action
+            </td>
+            <td class="gistify_sub_header_text"><h3>Show Plan</h3></td>
+          </tr>
+
+          <td></td>
+          <td><i>Freedom-80</i></td>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+          <tr>
+            <td class="gistify_sub_header_cont">
+              Actionable Signals Detected
+            </td>
+            <td colspan="3">
+                <button class="actionable_signals" onclick="clickAnyWhere('chat_conversation_18_conversation_cont_right')">
+                Competitor Mention
+              </button>
+              <button class="actionable_signals" onclick="clickAnyWhere('chat_conversation_08_conversation_cont_right')">
+                Previous Interaction Referred
+              </button>
+              <button class="actionable_signals" onclick="clickAnyWhere('chat_conversation_08_conversation_cont_right')">
+                Negative Sentiment
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+        </table>
+
+        <!-- starting timeline -->
+
+                <table class="gistify_table">
+                  <tr>
+                    <td class="gistify_read_more">
+                      <label
+                        id="gistify_read_more_label_id"
+                        class="gistify_read_more_label"
+                        onclick="readChat();">
+                        <h3>
+                          Show Timeline >>
+                        </h3></label>
+                    </td>
+                  </tr>
+                </table>
+
+                <div id="chat_gistify_timeline_view" class="chat_gistify_timeline_view">
+                  <table class="spacing_0 timeline_tbl" align="center">
+					<tr>
+						<td class="gistify_timeline_heading">Bot Action</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="gistify_timeline_heading">Customer Intent</td>
+					</tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class="timeline_center_line"><br /><br />|<br />|<br /></td>
+                      <td class="">------------</td>
+                      <td class="v_top">
+                        <div class="timeline_cust_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">Bill Details</td>
+
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="timeline_agent_conv_cont">
+                          <table id="timeline_expandale_id_01" class="timeline_conv_tbl" onclick="toggleConv('timeline_expandale_id_01', 'timeline_overlay_cont_id_01');">
+                            <tr>
+                              <td class="timeline_conv_td_subject">
+                                Show Bill Details
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont"></td>
+                            </tr>
+                          </table>
+                          <div id="timeline_overlay_cont_id_01" class="timeline_overlay_cont">
+                              Rent: $50</br> Excess Data: $8.3</br> Tax: $2.2</br> Total: $60.5
+                            </div>
+                        </div>
+                      </td>
+                      <td>------------</td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td class="">------------</td>
+                      <td>
+                        <div class="timeline_cust_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">Confirm Payment - No</td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont"></td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td>------------</td>
+                      <td>
+                        <div class="timeline_cust_conv_cont">
+                          <table class="timeline_conv_tbl">
+                            <tr>
+                              <td class="timeline_conv_td_subject">Change plan</td>
+							  <td>&nbsp;</td>
+							  <td>&nbsp;</td>
+							  <td>
+								<img src="assets/img/AngryEmoji.png" alt="bot" class="img_round_customer_churn" />
+							  </td>
+							  <td>&nbsp;</td>
+							  <td>&nbsp;</td>
+							  <td>
+								<img src="assets/img/previous-ixn.PNG" alt="bot" class="img_round_customer_churn" />
+							  </td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont"></td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+
+                        <div class="timeline_agent_conv_cont">
+                          <table id="timeline_expandale_id_02" class="timeline_conv_tbl" onclick="toggleConv('timeline_expandale_id_02', 'timeline_overlay_cont_id_02');">
+                            <tr>
+                              <td class="timeline_conv_td_subject">
+                                Show Plan
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont"></td>
+                            </tr>
+                          </table>
+                          <div id="timeline_overlay_cont_id_02" class="timeline_overlay_cont">
+                              Plan: Freedom-80</br> Voice: Unlimited</br> SMS: 100 per day</br> Data: 3 GB per day</br> Rent: $80
+                          </div>
+                        </div>
+                      </td>
+                      <td>------------</td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class="timeline_center_line">|<br />|<br />|<br />|<br /></td>
+                      <td class="">------------</td>
+                      <td>
+                        <div class="timeline_cust_conv_cont">
+                          <table id="timeline_expandale_id_03" class="timeline_conv_tbl" onclick="toggleConv('timeline_expandale_id_03', 'timeline_overlay_cont_id_03');">
+                            <tr>
+                              <td class="timeline_conv_td_subject">Unrecognized Utterance</td>
+							  <td>&nbsp;</td>
+							  <td>&nbsp;</td>
+							  <td>
+								<img src="assets/img/smileys/leave.PNG" alt="bot" class="img_round_customer_churn" />
+							  </td>
+                            </tr>
+                            <tr>
+                              <td class="sentiment_img_cont"></td>
+                            </tr>
+                          </table>
+                          <div id="timeline_overlay_cont_id_03" class="timeline_overlay_cont">
+                              80 bucks?...T-Mobile offers much cheaper plans.
+                            </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td>|</td>
+                      <td colspan="2"></td>
+                    </tr> -->
+
+                  </table>
+                </div>
+
+        <!-- Below timeline -->
+        <table class="gistify_table">
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+        </table>
+
+        <table class="gistify_table">
+          <tr>
+            <td class="gistify_sub_header_cont">Suggested Actions</td>
+            <td class="gistify_sub_header_text" colspan="3">
+              <div class="suggested_action">
+                <button id = "button1_sug_action" class="button button1_sug_action" onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'We can increase your free daily data limit to 1 GB')">
+                    Increase Free Data Limit
+                </button>
+            		<button class="button button2_sug_action"  onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'Being our valuable customer, we would like to offer you a discount of 30% on your bill for the next 6 months')">
+            				 Offer Bill Discount
+            		 </button>
+            		 <button class="button button3_sug_action" onclick="changeButtonColor(event);addTextAgent('suggested_response_new', 'Would you be interested to top-up your data plan with our new ‘Flexi data pack’?')">
+            				 Advise Data Pack
+            			</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+
+
+          <tr>
+            <td class="gistify_sub_header_cont">Suggested Response</td>
+            <td class="gistify_sub_header_text" colspan="3">
+              <div id="suggested_response_new" class="suggested_response_new">
+                We can increase your free daily data limit to 1 GB
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <button type="button" class="button button4" onclick="copyResponse('message-reply-box')">
+                <!-- <button type="button" class="button button4" onclick="copyNotes('acw');copyResponse('message-reply-box')"> -->
+                  Use Response
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="h_border"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="gistify_tbl_space"></td>
+          </tr>
+        </table>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
