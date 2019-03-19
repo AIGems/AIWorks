@@ -8,6 +8,7 @@
     <!-- <link href="assets/css/font.css" rel="stylesheet" type="text/css" /> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
 
   <body class="scroll-Yaxis">
@@ -567,6 +568,92 @@
                     </td>
                   </tr>
                 </table>
+				
+				<div id="new_chat_gistify_timeline_view" class="container">
+					<div class="page-header">
+						<h1 id="timeline">Customer Timeline</h1>
+					</div>
+					<table width="100%"><tr><th width="50%">Bot Action</th><th width="50%">Customer Intent</th></tr></table>
+					<ul class="timeline">
+						<li class="timeline-inverted">
+						  <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+						  <div class="timeline-panel">
+							<div class="timeline-heading">
+							  <h4 class="timeline-title">Bill Details</h4>
+							  <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 10:03:02 (HH:MM:SS)</small></p>
+							</div>
+						  </div>
+						</li>
+						<li>
+						  <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+						  <div class="timeline-panel">
+							<div class="timeline-heading">
+							  <table><tr><td><label onclick="toggleConv('src','timeline-body-1');"><h4 class="timeline-title">Show Bill Details</h4></label></td></tr></table>
+							</div>
+							<hr>
+							<div id="timeline-body-1" class="timeline-body" style='display:none'>
+							  <p>Rent: $50</br>Excess Data: $8.3</br>Tax: $2.2</br>Total: $60.5</p>
+							</div>
+						  </div>
+						</li>
+						<li class="timeline-inverted">
+						  <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+						  <div class="timeline-panel">
+							<div class="timeline-heading">
+							  <h4 class="timeline-title">Confirm Payment - No</h4>
+							  <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 10:03:11 (HH:MM:SS)</small></p>
+							</div>
+						  </div>
+						</li>
+						<li class="timeline-inverted">
+						  <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
+						  <div class="timeline-panel">
+							<div class="timeline-heading">
+							  <h4 class="timeline-title">Change plan</h4>
+							  <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 10:03:17 (HH:MM:SS)</small></p>
+							</div>
+						  </div>
+						</li>
+						<li>
+						 <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+						  <div class="timeline-panel">
+							<div class="timeline-heading">
+							  <table><tr><td><label onclick="toggleConv('src','timeline-body-2');"><h4 class="timeline-title">Show Plan</h4></label></td></tr></table>
+							</div>
+							<hr>
+							<div id="timeline-body-2" class="timeline-body" style='display:none'>
+							  <p>Plan: Freedom-80</br>Voice: Unlimited</br>SMS: 100 per day</br>Data: 3 GB per day</br>Rent: $80</p>
+							</div>
+						  </div>
+						</li>
+						<li class="timeline-inverted">
+						  <div class="timeline-badge danger"><i class="glyphicon glyphicon-thumbs-down"></i></div>
+						  <div class="timeline-panel">
+							<div class="timeline-heading">
+							  <table><tr><td><label onclick="toggleConv('src','timeline-body-3');"><h4 class="timeline-title">Unrecognized Utterance</h4></label></td></tr></table>
+							  <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 10:03:26 (HH:MM:SS)</small></p>
+							</div>
+							<hr>
+							<div id="timeline-body-3" class="timeline-body" style='display:none'>
+							  <p><b>80 bucks?...T-Mobile offers much cheaper plans.</b></p>
+							  <hr>
+							  <!--div class="btn-group">
+								<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+								  <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+								  <li><a href="#">Action</a></li>
+								  <li><a href="#">Another action</a></li>
+								  <li><a href="#">Something else here</a></li>
+								  <li class="divider"></li>
+								  <li><a href="#">Separated link</a></li>
+								</ul>
+							  </div-->
+							</div>
+						  </div>
+						</li>
+					</ul>
+				</div>
 
                 <div id="chat_gistify_timeline_view" class="chat_gistify_timeline_view">
                   <table class="spacing_0 timeline_tbl" align="center">
