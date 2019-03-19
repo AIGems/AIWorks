@@ -18,11 +18,23 @@
 
 	  </div>
 
+    <div class="gistify_text">
+      Gistify
+    </div>
+
+    <div class="toggle-switch" style="float:right;">
+        <input type="checkbox" name="css-toggle-example" class="toggle-switch-checkbox" id="css-toggle-example" checked>
+        <label class="toggle-switch-label" for="css-toggle-example" onclick="location.href = 'chatonly.html';">
+                <span class="toggle-switch-inner"></span>
+                <span class="toggle-switch-switch"></span>
+        </label>
+    </div>
+
 	  <div>
-		<input id="message-reply-box" class="form-control" name="text" placeholder="Write something..." aria-hidden="true" />
+		<input id="message-reply-box" class="message-reply-box" name="text" placeholder="Write something..." aria-hidden="true" />
 		<button
 		class="wwe-send-button"
-		onclick='agentReply("message-reply-box");scrollDown()'
+		onclick='agentReply("message-reply-box");copyNotes("acw");scrollDown()'
 		>
 		Send
 		</button>
@@ -31,30 +43,30 @@
 	  <table><tr><td></td></tr></table>
 	  <table><tr><td></td></tr></table>
 
+    <div id="acw_notes" class="acw_notes">
 	  <table class="gistify_table">
-          <div id="acw_notes">
             <tr>
-              <td class="gistify_sub_header_cont">
+              <td class="notes_sub_header_cont">
                 <label><b>Notes</b><br/></label>
               </td>
 			</tr>
 			<tr>
               <td>
-                <textarea id="acw" class="form-control-acw">Customer intent was Plan Change (more data). Bot showed Freedom-80 plan. Bot handoff due to unrecognized utterance ("80 bucks?...T-Mobile offers much cheaper plans"). </textarea>
+                <textarea id="acw" class="message-reply-box-acw">Customer intent was Plan Change (more data). Bot showed Freedom-80 plan. Bot handoff due to unrecognized utterance ("80 bucks?...T-Mobile offers much cheaper plans"). </textarea>
               </td>
             </tr>
             <tr>
-              <td class="gistify_sub_header_cont" colspan="4">
+              <td class="notes_sub_header_cont" colspan="4">
                 <button
                   class="button_notes button4_notes"
-                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'
+                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"notes_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'
                 >
                   Save
                 </button>
               </td>
             </tr>
-          </div>
         </table>
+      </div>
     </div>
 
 
@@ -68,8 +80,8 @@
                 class="intent_img"
               />&nbsp;Handoff Reason
             </td>
-            <td class="gistify_sub_header_text" colspan="3">
-              <h3>Unrecognized Customer Utterance</h3>
+            <td class="gistify_h3_header_text" colspan="3">
+              Unrecognized Customer Utterance
             </td>
           </tr>
 
@@ -88,7 +100,7 @@
                 class="intent_img"
               />&nbsp;Customer Intent
             </td>
-            <td id="handoff_intent" class="gistify_sub_header_text"><h3>Changes Plan</h3></td>
+            <td id="handoff_intent" class="gistify_h3_header_text">Changes Plan</td>
           </tr>
           <td></td>
           <td class="gistify_sub_header_text"><i>Unlimited data</i></td>
@@ -104,7 +116,7 @@
                 class="intent_img"
               />&nbsp;Bot Action
             </td>
-            <td id="handoff_action" class="gistify_sub_header_text"><h3>Show Plans</h3></td>
+            <td id="handoff_action" class="gistify_h3_header_text">Show Plans</td>
           </tr>
 
           <td></td>
@@ -157,15 +169,14 @@
                         id="gistify_read_more_label_id"
                         class="gistify_read_more_label"
                         onclick="readChat();">
-                        <h3>
-                          Show Timeline >>
-                        </h3></label>
+                        Show Timeline >>
+                        </label>
                     </td>
                   </tr>
                 </table>
 
                 <div id="chat_gistify_timeline_view" class="chat_gistify_timeline_view">
-                  
+
                 </div>
 
         <!-- Below timeline -->
@@ -222,8 +233,9 @@
           <tr>
             <td></td>
             <td>
-              <button type="button" class="button button4" onclick="copyNotes('acw');copyResponse('message-reply-box')">
-                Use Response
+              <!-- <button type="button" class="button button4" onclick="copyNotes('acw');copyResponse('message-reply-box')"> -->
+                <button type="button" class="button button4" onclick="copyResponse('message-reply-box')">
+                  Use Response
               </button>
             </td>
           </tr>

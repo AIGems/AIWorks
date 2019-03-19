@@ -41,18 +41,18 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 		var action=response['intents'][i][0]['action'];
 		var outtext=response['intents'][i][0]['text'][0];
 		var time=response['intents'][i][0]['time'];
-		
+
 		console.log(intent);
 		console.log(action);
 		console.log(outtext);
 		console.log(dict[intent]);
-		
+
 		if(action=="input.unknown")
 		{
 			action="Unrecognized Utterance";
 			document.getElementById("handoff").innerHTML="<i>"+outtext+"</i>";
 		}
-		
+
 		if(i==(response['intents'].length-1)){
 			intent_icon='<div class="timeline-badge danger"><i class="glyphicon glyphicon-thumbs-down"></i></div>';
 		}
@@ -62,19 +62,19 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 
 		var expandable_id="timeline_expandale_id_"+i;
 		var overlay_id="timeline_overlay_cont_id_"+i;
-		
-		
+
+
 		str+='<li class="timeline-inverted">'+intent_icon+'<div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+intent+'</h4><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+time+' (HH:MM:SS)</small></p></div></div></li><li><div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div><div class="timeline-panel"><div class="timeline-heading"><table><tr><td><label onclick="toggleConv(\'src\',\''+overlay_id+'\');"><h4 class="timeline-title">'+action+'</h4></label></td></tr></table></div><hr><div id="'+overlay_id+'" class="timeline-body" style="display:none"><p>'+outtext+'</p></div></div></li>';
 
 	}
 	str+='</ul></div>'
 	document.getElementById("chat_gistify_timeline_view").innerHTML=str;
-	
+
 	var handoff_intent=response['intents'][response['intents'].length-2][0]['intent'];
 	var handoff_action=response['intents'][response['intents'].length-2][0]['action'];
-	document.getElementById("handoff_intent").innerHTML="<h3>"+handoff_intent+"</h3>";
-	document.getElementById("handoff_action").innerHTML="<h3>"+handoff_action+"</h3>";
-	
+	document.getElementById("handoff_intent").innerHTML=handoff_intent;
+	document.getElementById("handoff_action").innerHTML=handoff_action;
+
 	//document.getElementById("text-area").value=response['conversation']
 
 	//addElementsToTable(response['intents'])
@@ -279,7 +279,7 @@ $(function () {
 
 function agentReply(id) {
 	var message = document.getElementById(id).value;
-	
+
 	if (message) {
 		var originalDiv = document.getElementById("chat_widget_container_id")
 		var div = document.createElement("div")
@@ -291,7 +291,7 @@ function agentReply(id) {
 		tbl.classList.add("l_float")
 		// table row creation
 		var row = document.createElement("tr");
-		// create element <td> and text node 
+		// create element <td> and text node
 		//Make text node the contents of <td> element
 		// put <td> at end of the table row
 		var cell_1 = document.createElement("td");
@@ -302,7 +302,7 @@ function agentReply(id) {
 		img_1.classList.add("img_round_64");
 		cell_1.appendChild(img_1);
 		row.appendChild(cell_1);
-		
+
 		var cell_2 = document.createElement("td");
 		cell_2.classList.add("conv_indicator_cont_left");
 		cell_2.classList.add("r_float");
@@ -312,13 +312,13 @@ function agentReply(id) {
 		img_2.classList.add("conv_indicator_left")
 		cell_2.appendChild(img_2);
 		row.appendChild(cell_1);
-		
+
 		var cell_3 = document.createElement("td");
 		cell_3.classList.add("conversation_cont_left")
 		var cellText_3 = document.createTextNode(message);
 		cell_3.appendChild(cellText_3)
 		row.appendChild(cell_3)
-		
+
 		tblBody.appendChild(row);
 		tbl.appendChild(tblBody);
 		div.appendChild(tbl)
