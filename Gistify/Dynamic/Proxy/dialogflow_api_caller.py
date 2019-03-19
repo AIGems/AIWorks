@@ -17,6 +17,7 @@ from string import punctuation
 from nltk.probability import FreqDist
 from heapq import nlargest
 from collections import defaultdict
+import time
 
 from aylienapiclient import textapi
 sent = textapi.Client("92285aca", "792df91d097ed0171c79984e43132d5d")
@@ -37,6 +38,7 @@ parser.add_argument('lang', help='multilingual support')
 
 def json_creator(file,session_id,status,error_type,customer_query,intentID,intentName,isFallBackIntent,action,parameters,bot_response,actionInComplete):
     data = {}
+    intent_time=time.strftime('%H:%M:%S', time.localtime())
     if not (os.path.isfile(file)):
         data['session_id'] = session_id
         data['sequence'] = []
@@ -54,7 +56,8 @@ def json_creator(file,session_id,status,error_type,customer_query,intentID,inten
             'action' : action,
             'parameters' : parameters,
             'bot_response' : bot_response,
-            'actionIncomplete' : actionInComplete
+            'actionIncomplete' : actionInComplete,
+            'intentTime' : intent_time
             })
     
     with open(file, 'w') as outfile:  
@@ -182,6 +185,7 @@ class GetJsonGistify(Resource):
         intents=[]
         intent_text_map={}
         intent_action_map={}
+        intent_time_map={}
         
         result = {}
         result['intents'] = []
@@ -203,6 +207,8 @@ class GetJsonGistify(Resource):
                             intent_text_map[item['intentName']].append(item['customer_query'])
                             
                 intent_action_map[item['intentName']]=item['action']
+                if item['intentName'] not in intent_time_map:
+                    intent_time_map[item['intentName']]=item['intentTime']
         
         print(intents)
         #intents=list(set(intents))
@@ -212,7 +218,8 @@ class GetJsonGistify(Resource):
             result['intents'].append([{
                      'intent':item,
                      'action':intent_action_map[item],
-                     'text' : intent_text_map[item]
+                     'text' : intent_text_map[item],
+                     'time' : intent_time_map[item]
                      }])             
      
         #return(jsonify(result))

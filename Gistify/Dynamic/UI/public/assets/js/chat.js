@@ -31,7 +31,7 @@ $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 	console.log(response);
 	console.log(response['intents']);
-	str='<table class="spacing_0 timeline_tbl" align="center">';
+	str='<table width="65%"><tr><th width="25%">Bot Action</th><th width="25%">Customer Intent</th></tr></table><ul class="timeline">'
 	var dict = { "Bill Details" : "white.jpg","Change Plan": "angry.png", "Bill Payment No": "white.jpg","Bill Payment Yes": "white.jpg", "Bill Payment": "white.jpg", "Default Fallback Intent"  : "white.jpg"};
 	var churn_dict = { "Bill Details" : "white.jpg","Change Plan": "white.jpg", "Bill Payment No": "white.jpg","Bill Payment Yes": "white.jpg", "Bill Payment": "white.jpg", "Default Fallback Intent"  : "white.jpg" };
 
@@ -40,6 +40,7 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 		var intent=response['intents'][i][0]['intent'];
 		var action=response['intents'][i][0]['action'];
 		var outtext=response['intents'][i][0]['text'][0];
+		var time=response['intents'][i][0]['time'];
 		
 		console.log(intent);
 		console.log(action);
@@ -48,18 +49,25 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 		
 		if(action=="input.unknown")
 		{
-			action="Unrecognized Input";
+			action="Unrecognized Utterance";
 			document.getElementById("handoff").innerHTML="<i>"+outtext+"</i>";
+		}
+		
+		if(i==(response['intents'].length-1)){
+			intent_icon='<div class="timeline-badge danger"><i class="glyphicon glyphicon-thumbs-down"></i></div>';
+		}
+		else{
+			intent_icon='<div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>';
 		}
 
 		var expandable_id="timeline_expandale_id_"+i;
 		var overlay_id="timeline_overlay_cont_id_"+i;
 		
-
-		str+='<tr><td></td><td></td><td class="timeline_center_line"><br/><br/>|<br/>|<br/></td><td class="">------------</td><td class="v_top"><div class="timeline_cust_conv_cont"><table class="timeline_conv_tbl"><tr><td class="timeline_conv_td_subject">'+intent+'</td></tr><tr><td class="sentiment_img_cont"><img class="sentiment_emoji" src="assets/img/smileys/'+dict[intent]+'" title="Angry"/><img class="sentiment_emoji" src="assets/img/smileys/'+churn_dict[intent]+'"/></td></tr></table></div></td></tr><tr><td colspan="2"></td><td>|</td><td colspan="2"></td></tr><tr><td colspan="2"></td><td>|</td><td colspan="2"></td></tr><tr><td><div class="timeline_agent_conv_cont"><table id="'+expandable_id+'" class="timeline_conv_tbl" onclick="toggleConv(\''+expandable_id+'\',\''+overlay_id+'\');"><tr><td class="timeline_conv_td_subject">'+action+'</td></tr><tr><td class="sentiment_img_cont"> </td></tr></table><div id="'+overlay_id+'" class="timeline_overlay_cont">'+outtext+'</div> </div> </td> <td> ------------</td><td class="timeline_center_line">|<br/>|<br/>|<br/>|<br/></td><td></td><td></td></tr><tr><td colspan="2"></td><td>|</td><td colspan="2"></td></tr><tr><td colspan="2"></td><td>|</td><td colspan="2"></td></tr>';
+		
+		str+='<li class="timeline-inverted">'+intent_icon+'<div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+intent+'</h4><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+time+' (HH:MM:SS)</small></p></div></div></li><li><div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div><div class="timeline-panel"><div class="timeline-heading"><table><tr><td><label onclick="toggleConv(\'src\',\''+overlay_id+'\');"><h4 class="timeline-title">'+action+'</h4></label></td></tr></table></div><hr><div id="'+overlay_id+'" class="timeline-body" style="display:none"><p>'+outtext+'</p></div></div></li>';
 
 	}
-	str+='</table>'
+	str+='</ul></div>'
 	document.getElementById("chat_gistify_timeline_view").innerHTML=str;
 	
 	var handoff_intent=response['intents'][response['intents'].length-2][0]['intent'];
