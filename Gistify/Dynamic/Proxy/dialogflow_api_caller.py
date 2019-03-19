@@ -277,6 +277,50 @@ class GetConversation(Resource):
         #return(jsonify(result))
         js=json.dumps(result)
         return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
+
+
+class GetActionableIndicators(Resource):
+	def post(self):
+		""" Drive the process from argument to output """
+		args = parser.parse_args()
+		session_id=args['session_id']
+	    
+		file_path="json\\"
+		file=file_path+session_id+".json"
+	    
+		if (os.path.isfile(file)):
+			with open(file,'r') as infile:
+				data=json.loads(infile.read())
+
+		intents=[]
+		intent_text_map={}
+
+		result = {}
+		result['actions'] = []
+		text=""
+		start_num=0
+	    
+		for count,item in enumerate(data['sequence']):
+			print(item['customer_query'])
+			if 'T-MOBILE' in item['customer_query'].upper():
+				print("entering competitor")
+				competitor=True
+				competitor_count=count*2
+
+			if 'CALLED' in item['customer_query'].upper():
+				print("entering previous interaction")
+				previous_interaction=True
+				previous_interaction_count=count*2
+
+			if 'FRUSTRATING' in item['customer_query'].upper():
+				print("entering negative sentiment")
+				negative_sentiment=True
+				negative_sentiment_count=count*2
+
+		result['actions'].append({'competitor':{'presence':'yes','index':competitor_count},'previous_interaction':{'presence':'yes','index':previous_interaction_count},'sentiment':{'presence':'yes','index':negative_sentiment_count}})
+
+		js=json.dumps(result)
+		return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
         
 class ClearJsonSummary(Resource):
     def post(self):
@@ -374,6 +418,7 @@ api.add_resource(DialogFlowWebhook, '/df_webhook')
 api.add_resource(SentimentScorer, '/scoresentiment')
 api.add_resource(GetConversation,'/get_conversation')
 api.add_resource(KeywordExtract,'/keywords_extract')
+api.add_resource(GetActionableIndicators,'/get_signals')
 
 if __name__ == '__main__':
     #app.run(debug=True,host='0.0.0.0', port=4000,ssl_context='adhoc')

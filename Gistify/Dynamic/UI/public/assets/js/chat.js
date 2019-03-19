@@ -81,6 +81,18 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 },'json');
 
 
+$.post('http://127.0.0.1:4000/get_signals',data,function(response){
+	console.log(response)
+	console.log(response['actions'])
+	var competitior_line=response['actions'][0]['competitor']['index']
+	var previous_interaction_line=response['actions'][0]['previous_interaction']['index']
+	var sentiment=response['actions'][0]['sentiment']['index']
+	
+	str='<button id="competitor" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+competitior_line+'_conversation\')">Competitor Mention</button><button id="previous" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+previous_interaction_line+'_conversation\')">Previous Interaction Referred</button><button id="sentiment" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+sentiment+'_conversation\')">Negative Sentiment</button>'
+    document.getElementById("actionable_signals").innerHTML = str;
+},'json');
+
+
 function keyextract(){
 
     console.log(wholechat)
@@ -104,7 +116,9 @@ function customerChat(chat){
 	table.className="conversation_table r_float";
 	var row = table.insertRow(0);
 	var cell1 = row.insertCell(0);
+	var cell_id="chat_conversations_"+i+"_conversation";
 	cell1.className = "conversation_cont_right";
+	cell1.id=cell_id;
 	cell1.innerHTML = chat;
 
 	var cell2 = row.insertCell(1);
@@ -139,6 +153,8 @@ function botChat(chat){
 
 	var cell3 = row.insertCell(2);
 	cell3.className = "conversation_cont_left";
+	var cell_id="chat_conversations_"+i+"_conversation";
+	cell3.id=cell_id;
 	cell3.innerHTML = chat;
 
 	div.appendChild(table);
