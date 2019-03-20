@@ -85,32 +85,31 @@ Released under the MIT license: http://jsbin.mit-license.org
     <table><tr><td></td></tr></table>
     <table><tr><td></td></tr></table>
 
-    <table class="gistify_table">
-          <div id="acw_notes">
+    <div id="acw_notes" class="acw_notes">
+	  <table class="gistify_table">
             <tr>
-              <td class="gistify_sub_header_cont">
+              <td class="notes_sub_header_cont">
                 <label><b>Notes</b><br/></label>
               </td>
-            </tr>
-            <tr>
+			</tr>
+			<tr>
               <td>
                 <textarea id="acw" class="message-reply-box-acw">
-                </textarea
-                >
+                </textarea>
               </td>
             </tr>
             <tr>
-              <td class="gistify_sub_header_cont">
+              <td class="notes_sub_header_cont" colspan="4">
                 <button
                   class="button_notes button4_notes"
-                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"gistify_sub_header_cont\">Notes Submitted Successfully</td></tr></table>")'>
+                  onclick='changeText("acw_notes","<table><tr><td width=\"20%\" class=\"notes_sub_header_cont\"><b>Notes Submitted Successfully</b></td></tr></table>")'
+                >
                   Save
                 </button>
               </td>
             </tr>
-
-          </div>
         </table>
+      </div>
 
 
 
