@@ -2,8 +2,6 @@
 
 function session_add(sess_id){
 var data={'session_id':sess_id}
-var wholechat;
-
 $.post('http://127.0.0.1:4000/add_session',data,function(response){
 	console.log(response)
 },'json');
@@ -16,12 +14,26 @@ $(document).ready(function() {
 	// Credentials
 	//var baseUrl = "http://api.api.ai/v1/query?v=20160910&";
 	var baseUrl = "http://127.0.0.1:4000/chatsummarizer";
-	var currentUrl = window.location.href
-	console.log(currentUrl)
-	var parameters = location.search.split('number=')[1]
-	console.log(parameters)
-	session_add(parameters)
-	//var accessToken = "553ab6017e584e0fa351952c8c9ca956";
+	
+	function getJsonFromUrl(url) {
+       if(!url) url = location.search;
+	   var query = url.substr(1);
+	   var result = {};
+	   query.split("&").forEach(function(part) {
+	   var item = part.split("=");
+	   result[item[0]] = decodeURIComponent(item[1]);
+      });
+      return result;
+     }
+	 
+	 var result = getJsonFromUrl()
+     var firstname = result['firstname']
+	 var lastname = result['lastname']
+	 var email = result['email']
+	 session_add(firstname)
+	 console.log(firstname)
+	 console.log(lastname)
+	 console.log(email)
 
 	//---------------------------------- Add dynamic html bot content(Widget style) ----------------------------
 	// You can also add the html content in html page and still it will work!
@@ -137,7 +149,7 @@ $(document).ready(function() {
 			type: "POST",
 			url: baseUrl,
 			dataType: "json",
-			data: { "query": text, "session_id": parameters },
+			data: { "query": text, "session_id": firstname },
 			success: function(res) {
 				console.log("function output");
 				console.log(res);

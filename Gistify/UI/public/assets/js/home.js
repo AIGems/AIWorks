@@ -5,8 +5,7 @@ $(document).ready(function() {
 	var baseUrl = "http://127.0.0.1:4000/chatsummarizer";
 	var currentUrl = window.location.href
 	console.log(currentUrl)
-	var parameters = location.search.split('number=')[1]
-	console.log(parameters)
+
 	//var accessToken = "553ab6017e584e0fa351952c8c9ca956";
 
 	//---------------------------------- Add dynamic html bot content(Widget style) ----------------------------
@@ -30,15 +29,25 @@ $(document).ready(function() {
 							'</div><!--chatCont end-->'+
 
 							'<div class="profile_div">'+
-								'<div class="row">'+
-									'<div class="col-hgt">'+
-										'<form method="get" action="/chatbot.html">'+
-										'<label>Enter your mobile number</label></br>'+
-										'<input type="text" name="number" value=""></input></br>'+
+							   '<form method="get" action="/chatbot.html">'+
+								   '<div class="row">'+
+									   '<div class="col-hgt">'+
+										'<label>First Name&nbsp;&nbsp;</label></br>'+
+										'<input type="text" name="firstname" value=""></input></br>'+
+										'</div><!--col-hgt end-->'+
+										'<div class="col-hgt">'+
+										'<label>Last Name&nbsp;&nbsp;</label></br>'+
+										'<input type="text" name="lastname" value=""></input></br>'+
+										'</div><!--col-hgt end-->'+
+										'<div class="col-hgt">'+
+										'<label>Email ID&nbsp;&nbsp;</label></br>'+
+										'<input type="text" name="email" value=""></input></br>'+
+										'</div><!--col-hgt end-->'+
+										'<div class="col-hgt">'+
 										'<input type="submit" class="button" style="vertical-align:middle">'+
-										'</form>'
 									'</div><!--col-hgt end-->'+
 								'</div><!--row end-->'+
+							'</form>'
 							'</div><!--profile_div end-->';
 
 	$("mybot").html(mybot);
