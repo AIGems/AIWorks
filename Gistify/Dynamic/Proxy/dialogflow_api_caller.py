@@ -18,6 +18,8 @@ from nltk.probability import FreqDist
 from heapq import nlargest
 from collections import defaultdict
 import time
+import difflib
+from operator import itemgetter
 
 from aylienapiclient import textapi
 sent = textapi.Client("92285aca", "792df91d097ed0171c79984e43132d5d")
@@ -34,6 +36,24 @@ parser.add_argument('session_id', help='Unique session ID of Customer chat')
 parser.add_argument('result', help='dialogflow integration')
 parser.add_argument('length', help='length of keywords to be returned')
 parser.add_argument('lang', help='multilingual support')
+
+
+telecom_companies_json = json.loads(open('query.json', encoding='utf-8').read())
+telecom_company_list=[]
+for tele_item in telecom_companies_json:
+    telecom_company_list.append(tele_item['companyLabel'])
+global stop_words
+stop_words=['G-mobile', 'G-Mobile', 'g-mobile', 'gmobile','Gmobile', 'GMobile', 'Are', 'The', 'the', 'is', 
+            'too', 'plan', 'much', 'for', 'data', 'more',"a","about","all","and","are", 'mobile',
+            "as","at","back","be","because","been","but","can","can't","come","could", 'Mobile',
+            'G-mobiles', 'G-Mobiles', 'g-mobiles', 'gmobiles','Gmobiles', 'GMobiles', 'Mobiles', 'mobiles',
+            "did","didn't","do","don't","for","from","get","go","going","good","got",
+            "had","have","he","her","here","he's","hey","him","his","how","I","if","I'll",
+            "I'm","in","is","it","it's","just","know","like","look","me","mean","my","no",
+            "not","now","of","oh","OK","okay","on","one","or","out","really","right","say",
+            "see","she","so","some","something","tell","that","that's","the","then","there",
+            "they","think","this","time","to","up","want","was","we","well","were","what",
+            "when","who","why","will","with","would","yeah","yes","you","your","you're"]
 
 
 def json_creator(file,session_id,status,error_type,customer_query,intentID,intentName,isFallBackIntent,action,parameters,bot_response,actionInComplete):
@@ -84,11 +104,16 @@ def load_dirty_json(dirty_json):
     return clean_json
 
 
-def calculate_sentiment_score(chatlist):
+def calculate_sentiment_score(chatlist,indexlist):
     sentiment_score_list=[]
+    print(indexlist)
+    index=0
     for line in chatlist:
         s=sent.Sentiment({'text':line})
-        sentiment_score_list.append((s['text'],s['polarity'],s['polarity_confidence']))
+        print(s)
+        if s['polarity']=="negative":
+            sentiment_score_list.append((s['text'],s['polarity'],s['polarity_confidence'],indexlist[index]))
+        index=index+1
     return(sentiment_score_list)
 
 def read_text(text):
@@ -165,6 +190,47 @@ def summarize(ranks, sentences, length):
     indexes = nlargest(int(length), ranks, key=ranks.get)
     final_sentences = [sentences[j] for j in sorted(indexes)]
     return ' '.join(final_sentences)
+
+
+def get_competitor_mention_distance(INPUT_CHAT_SENTENCE):
+    INPUT_CHAT_SENTENCE = INPUT_CHAT_SENTENCE.replace(",", " ")
+    INPUT_CHAT_SENTENCE = INPUT_CHAT_SENTENCE.replace(".", " ")
+    chat_list=INPUT_CHAT_SENTENCE.split()
+    chat_list=[word for word in chat_list if word not in stop_words]
+
+
+    max_distance=0
+    max_word=None
+    max_company=None
+    distance_list=[] 
+    for word in chat_list:
+        for company in telecom_company_list:
+            distance = difflib.SequenceMatcher(None,word,company).ratio()*100
+            distance_list.append((word, company, distance))
+            if int(distance) > int(max_distance): 
+                max_word=word
+                max_company=company
+                max_distance=distance
+    #print("Distance between %s and %s: %s" % (max_word, max_company, max_distance))
+    return (max_word, max_company, max_distance)
+
+def get_competitor_mention_by_threshold(INPUT_CHAT_SENTENCE, threshold=60):
+    chat_word, company_name, prob = get_competitor_mention_distance(INPUT_CHAT_SENTENCE)
+    if prob>=threshold:
+        return (chat_word, company_name, prob)
+    else:
+        return None
+
+def get_competitor_mention_from_chat_transcript(chat_transcript, threshold=60):
+    result_list=[]
+    for line_number, line in enumerate(chat_transcript.splitlines()):
+        if get_competitor_mention_by_threshold(line, threshold=threshold):
+            chat_word, company_name, prob = get_competitor_mention_by_threshold(line, threshold=threshold)
+            matched_line_number=line_number 
+            result_list.append((matched_line_number, chat_word, company_name, prob))
+    return result_list
+
+
 
 
 class NotesSummarizer(Resource):
@@ -467,6 +533,34 @@ class GetActionableIndicators(Resource):
 
 		js=json.dumps(result)
 		return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
+
+
+class CompetitorIndicator(Resource):
+    def post(self):
+        """ Drive the process from argument to output """
+        args = parser.parse_args()
+        session_id=args['session_id']
+        
+        file_path="json\\"
+        file=file_path+session_id+".json"
+        
+        if (os.path.isfile(file)):
+            with open(file,'r') as infile:
+                data=json.loads(infile.read())
+
+        result = {}
+        result['competitors'] = []
+        threshold=60
+      
+        for count,item in enumerate(data['sequence']):
+            print(item['customer_query'])
+            if get_competitor_mention_by_threshold(item['customer_query'], threshold=threshold):
+                chat_word, company_name, prob = get_competitor_mention_by_threshold(item['customer_query'], threshold=threshold)
+                competitor_count=count*2
+                result['competitors'].append({'competitor':{'competitor_name':company_name,'index':competitor_count,'reference':chat_word,'probability':prob}})
+
+        js=json.dumps(result)
+        return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
         
 class ClearJsonSummary(Resource):
     def post(self):
@@ -522,22 +616,27 @@ class SentimentScorer(Resource):
             
         intents=[]
         intent_text_map={}
+        intent_line_map={}
         intent_sentiment_map={}
         
-        for item in data['sequence']:
+        for count,item in enumerate(data['sequence']):
             if item['intentName']!="Default Welcome Intent":
                 intents.append(item['intentName'])
                 if item['intentName'] not in intent_text_map:
                     intent_text_map[item['intentName']]=[item['customer_query']]
+                    intent_line_map[item['intentName']]=[count*2]
                 else:
                     if item['customer_query'] not in intent_text_map[item['intentName']]:
                         intent_text_map[item['intentName']].append(item['customer_query'])
+                        intent_line_map[item['intentName']].append(count*2)
         #return("<html><body>Hi</body></html>")
         
         for key,value in intent_text_map.items():
-            intent_sentiment_map[key]=calculate_sentiment_score(value)
-            
-        return(jsonify(intent_sentiment_map))
+            intent_sentiment_map[key]=calculate_sentiment_score(value,intent_line_map[key])
+
+        js=json.dumps(intent_sentiment_map)
+        return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
+        
         
 class KeywordExtract(Resource):
     def post(self):
@@ -567,6 +666,7 @@ api.add_resource(GetActionableIndicators,'/get_signals')
 api.add_resource(AddSession,'/add_session')
 api.add_resource(RetrieveSession,'/retrieve_session')
 api.add_resource(NotesSummarizer,'/summarize_notes')
+api.add_resource(CompetitorIndicator,'/competitor')
 
 if __name__ == '__main__':
     #app.run(debug=True,host='0.0.0.0', port=4000,ssl_context='adhoc')

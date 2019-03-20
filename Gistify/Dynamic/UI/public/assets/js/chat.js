@@ -4,14 +4,16 @@ $( document ).ready(function() {
 
 var data={'session_id':'9786597778'}
 var wholechat;
+var dict = { 'Change Plan': '<i class="em em-angry"></i>&nbsp;&nbsp;&nbsp;&nbsp;<img class="em" src="assets/img/smileys/repeat.svg"></img>', 'Handoff To Agent': '<i class="em em-runner" style="transform: scaleX(-1);"></i>'};
+var dyn_dict = []
 
 var url='http://127.0.0.1:4000/retrieve_session';
 fetch(url).then(function(response) {
   return response.json();
 }).then(function(data) {
   chat_widget(data['session_id']);
-  get_gistify(data['session_id']);
   get_signals(data['session_id']);
+  get_gistify(data['session_id']);
 }).catch(function() {
   console.log("Booo");
 });
@@ -52,13 +54,15 @@ $.post('http://127.0.0.1:4000/summarize_notes',data,function(response){
 },'json');
 }
 
+
 function get_gistify(session_id){
-var data={'session_id':session_id}
+	
+	var data={'session_id':session_id}
+	
 $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 	console.log(response);
 	console.log(response['intents']);
 	str='<table width="90%"><tr><th width="45%">Bot Action</th><th width="45%">Customer Intent</th></tr></table><ul class="timeline">'
-	var dict = { 'Change Plan': '<i class="em em-angry"></i>', 'Handoff To Agent': '<i class="em em-runner" style="transform: scaleX(-1);"></i>'};
 
 	for(i=0;i<=response['intents'].length-1;i++){
 		var intent=response['intents'][i][0]['intent'];
@@ -104,6 +108,7 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 			console.log(intent)
 			console.log("dict of intent is")
 			console.log(dict[intent])
+			console.log(dyn_dict[intent])
 			if(dict.hasOwnProperty(intent)){
 				str+='<table><tr><td><label onclick="toggleConv(\'src\',\''+timeline_intent_id+'\');"><h4 class="timeline-title">'+intent+'&nbsp;&nbsp;&nbsp;&nbsp;'+dict[intent]+'</h4></label></td></tr></table><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+time+' (HH:MM:SS)</small></p>';
 			}
@@ -152,20 +157,89 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 
 	//addElementsToTable(response['intents'])
 },'json');
+
 }
+
+
+function get_competitor(session_id, callback){
+var data={'session_id':session_id}
+var str;
+$.post('http://127.0.0.1:4000/competitor',data,function(response){
+	console.log(response)
+	console.log(response['competitors'])
+	if(response['competitors'].length !== 0){
+	var competitor_line=response['competitors'][0]['competitor']['index']
+	competitor_str='<button id="competitor" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+competitor_line+'_conversation\')">Competitor Mention</button>'
+	callback(competitor_str);
+	}
+	else{
+		console.log("no competitor mentioned")
+		return null
+	}
+},'json');
+}
+
+
+function get_negative_indicator(session_id, callback){
+var data={'session_id':session_id}
+var max_negative=0
+var max_negative_line=0
+var max_negative_str;
+
+$.post('http://127.0.0.1:4000/scoresentiment',data,function(response){
+	console.log(response)
+	for (var key in response) {
+		if (response.hasOwnProperty(key)) {           
+			if(response[key].length !== 0){
+				if(response[key][0][2]>max_negative){
+				max_negative=response[key][0][2]
+				max_negative_line=response[key][0][3]
+				max_negative_intent=key
+				}
+			}
+		}
+	}
+	if(max_negative !== 0){
+	dyn_dict.push({
+    key:   max_negative_intent,
+    value: "<i class=\"em em-angry\"></i>"
+   });
+   console.log("dyn_dict")
+   console.log(dyn_dict)
+	max_negative_str='<button id="sentiment" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+max_negative_line+'_conversation\')">Negative Sentiment</button>'
+	callback(max_negative_str);
+	}
+	else{
+		console.log("no negative sentiment")
+		return null
+	}
+},'json');
+}
+
 
 function get_signals(session_id){
 var data={'session_id':session_id}
-$.post('http://127.0.0.1:4000/get_signals',data,function(response){
-	console.log(response)
-	console.log(response['actions'])
-	var competitior_line=response['actions'][0]['competitor']['index']
-	var previous_interaction_line=response['actions'][0]['previous_interaction']['index']
-	var sentiment=response['actions'][0]['sentiment']['index']
 
-	str='<button id="competitor" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+competitior_line+'_conversation\')">Competitor Mention</button><button id="previous" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+previous_interaction_line+'_conversation\')">Previous Interaction Referred</button><button id="sentiment" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+sentiment+'_conversation\')">Negative Sentiment</button>'
-    document.getElementById("actionable_signals").innerHTML = str;
-},'json');
+	get_competitor(session_id,function(competitor_str){
+	console.log("competitor api invoked")
+	console.log(competitor_str)
+	
+	get_negative_indicator(session_id,function(max_negative_str){
+	console.log("max_negative api invoked")
+	console.log(max_negative_str)
+	
+	$.post('http://127.0.0.1:4000/get_signals',data,function(response){
+		console.log(response)
+		console.log(response['actions'])
+		var competitior_line=response['actions'][0]['competitor']['index']
+		var previous_interaction_line=response['actions'][0]['previous_interaction']['index']
+		var sentiment=response['actions'][0]['sentiment']['index']
+
+		str=competitor_str+'<button id="previous" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+previous_interaction_line+'_conversation\')">Previous Interaction Referred</button>'+max_negative_str;
+		document.getElementById("actionable_signals").innerHTML = str;
+	},'json');
+		});
+	});
 }
 
 
