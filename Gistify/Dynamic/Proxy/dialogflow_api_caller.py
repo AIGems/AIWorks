@@ -63,6 +63,17 @@ def json_creator(file,session_id,status,error_type,customer_query,intentID,inten
     with open(file, 'w') as outfile:  
         json.dump(data, outfile)
     return(data)
+
+
+def session_add(file,session_id):
+	with open(file,'w') as fwrite:
+		fwrite.write(session_id+"\n")
+
+def session_retrieve(file):
+	with open(file,'r') as fread:
+		session=fread.readlines()[0].split("\n")[0]
+	print(session)
+	return(session)
     
     
 def load_dirty_json(dirty_json):
@@ -122,11 +133,39 @@ class ChatSummarizer(Resource):
         payload = { 'query' : query , 'lang' : 'en', 'sessionId' : session_id, 'timezone':'America/New_York'}
         file_path="json\\"
         file=file_path+session_id+".json"
+        session_file=file_path+"session.txt"
 
+        #session_add(session_file,session_id)
         r=requests.post(url,headers=headers, data=json.dumps(payload))
         res=json.loads(r.text)
         print(res)
         data=json_creator(file,res['sessionId'],res['status']['code'],res['status']['errorType'],res['result']['resolvedQuery'],res['result']['metadata']['intentId'],res['result']['metadata']['intentName'],res['result']['metadata']['isFallbackIntent'],res['result']['action'],res['result']['parameters'],res['result']['fulfillment']['speech'],res['result']['actionIncomplete'])   
+        js=json.dumps(data)
+        return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
+
+class AddSession(Resource):
+    def post(self):
+        """ Drive the process from argument to output """
+        args = parser.parse_args()
+        session_id=args['session_id']
+        
+        file_path="json\\"
+        session_file=file_path+"session.txt"
+
+        session_add(session_file,session_id)
+        data={'result':'success'}
+        js=json.dumps(data)
+        return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
+
+class RetrieveSession(Resource):
+    def get(self):
+        """ Drive the process from argument to output """    
+        file_path="json\\"
+        session_file=file_path+"session.txt"
+
+        session=session_retrieve(session_file)
+        data={'session_id':session}
+        print(data)
         js=json.dumps(data)
         return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
 
@@ -231,6 +270,7 @@ class GetConversation(Resource):
         """ Drive the process from argument to output """
         args = parser.parse_args()
         session_id=args['session_id']
+        print(session_id)
         
         file_path="json\\"
         file=file_path+session_id+".json"
@@ -419,6 +459,8 @@ api.add_resource(SentimentScorer, '/scoresentiment')
 api.add_resource(GetConversation,'/get_conversation')
 api.add_resource(KeywordExtract,'/keywords_extract')
 api.add_resource(GetActionableIndicators,'/get_signals')
+api.add_resource(AddSession,'/add_session')
+api.add_resource(RetrieveSession,'/retrieve_session')
 
 if __name__ == '__main__':
     #app.run(debug=True,host='0.0.0.0', port=4000,ssl_context='adhoc')

@@ -1,3 +1,16 @@
+
+
+function session_add(sess_id){
+var data={'session_id':sess_id}
+var wholechat;
+
+$.post('http://127.0.0.1:4000/add_session',data,function(response){
+	console.log(response)
+},'json');
+}
+
+
+
 $(document).ready(function() {
 
 	// Credentials
@@ -7,6 +20,7 @@ $(document).ready(function() {
 	console.log(currentUrl)
 	var parameters = location.search.split('number=')[1]
 	console.log(parameters)
+	session_add(parameters)
 	//var accessToken = "553ab6017e584e0fa351952c8c9ca956";
 
 	//---------------------------------- Add dynamic html bot content(Widget style) ----------------------------

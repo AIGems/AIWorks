@@ -5,13 +5,26 @@ $( document ).ready(function() {
 var data={'session_id':'9786597778'}
 var wholechat;
 
+var url='http://127.0.0.1:4000/retrieve_session';
+fetch(url).then(function(response) {
+  return response.json();
+}).then(function(data) {
+  chat_widget(data['session_id']);
+  get_gistify(data['session_id']);
+  get_signals(data['session_id']);
+}).catch(function() {
+  console.log("Booo");
+});
+
+function chat_widget(session_id){
+var data={'session_id':session_id}	
 $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
-	console.log(response)
-	console.log(response['conversation'])
-	wholechat=response['conversation'];
-	wholechat=wholechat.toString();
-	console.log("Wholechat");
-	console.log(wholechat);
+	//console.log(response)
+	//console.log(response['conversation'])
+	//wholechat=response['conversation'];
+	//wholechat=wholechat.toString();
+	//console.log("Wholechat");
+	//console.log(wholechat);
 	var chats=response['conversation'].split("\n");
 	console.log(chats)
 
@@ -26,8 +39,10 @@ $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 	keyextract()
 
 },'json');
+}
 
-
+function get_gistify(session_id){
+var data={'session_id':session_id}
 $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 	console.log(response);
 	console.log(response['intents']);
@@ -79,8 +94,10 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 
 	//addElementsToTable(response['intents'])
 },'json');
+}
 
-
+function get_signals(session_id){
+var data={'session_id':session_id}
 $.post('http://127.0.0.1:4000/get_signals',data,function(response){
 	console.log(response)
 	console.log(response['actions'])
@@ -91,6 +108,7 @@ $.post('http://127.0.0.1:4000/get_signals',data,function(response){
 	str='<button id="competitor" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+competitior_line+'_conversation\')">Competitor Mention</button><button id="previous" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+previous_interaction_line+'_conversation\')">Previous Interaction Referred</button><button id="sentiment" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+sentiment+'_conversation\')">Negative Sentiment</button>'
     document.getElementById("actionable_signals").innerHTML = str;
 },'json');
+}
 
 
 function keyextract(){

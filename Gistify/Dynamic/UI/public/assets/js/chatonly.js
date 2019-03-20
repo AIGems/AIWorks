@@ -5,8 +5,23 @@ $( document ).ready(function() {
 var data={'session_id':'9786597778'}
 var wholechat;
 
+var url='http://127.0.0.1:4000/retrieve_session';
+fetch(url).then(function(response) {
+  return response.json();
+}).then(function(data) {
+  console.log(data);
+  console.log(data['session_id']);
+  chat_widget(data['session_id']);
+}).catch(function() {
+  console.log("Booo");
+});
+
+
+function chat_widget(session_id){
+var data={'session_id':session_id}	
 $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 	console.log(response)
+	//session_id=get_session();
 	console.log(response['conversation'])
 	wholechat=response['conversation'];
 	wholechat=wholechat.toString();
@@ -23,9 +38,9 @@ $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 			botChat(chats[i]);
 		}
 	}
-	keyextract()
 
 },'json');
+}
 
 
 function customerChat(chat){
