@@ -583,8 +583,11 @@
 						  <div class="timeline-badge warning"></div>
 						  <div class="timeline-panel">
 							<div class="timeline-heading">
-							  <h4 class="timeline-title">Bill Details</h4>
+							  <table><tr><td><label onclick="toggleConv('src','timeline-intent-1');"><h4 class="timeline-title">Bill Details</h4></label></td></tr></table>
 							  <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 10:03:02 (HH:MM:SS)</small></p>
+							  <div id="timeline-intent-1" class="timeline-body" style='display:none'>
+							  <p><b>Mobile Number: </b>9786597778</p>
+							</div>
 							</div>
 						  </div>
 						</li>
@@ -596,7 +599,7 @@
 							</div>
 							<hr>
 							<div id="timeline-body-1" class="timeline-body" style='display:none'>
-							  <p>Rent: $50</br>Excess Data: $8.3</br>Tax: $2.2</br>Total: $60.5</p>
+							  <p><b>Rent: </b>$50</br><b>Excess Data: </b>$8.3</br><b>Tax: </b>$2.2</br><b>Total: </b>$60.5</p>
 							</div>
 						  </div>
 						</li>
@@ -613,8 +616,11 @@
 						  <div class="timeline-badge danger"></div>
 						  <div class="timeline-panel">
 							<div class="timeline-heading">
-							  <h4 class="timeline-title">Change Plan&nbsp;&nbsp;&nbsp;&nbsp;<i class="em em-angry"></i></h4>
-                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 10:03:17 (HH:MM:SS)</small></p>
+							  <table><tr><td><label onclick="toggleConv('src','timeline-intent-2');"><h4 class="timeline-title">Change Plan&nbsp;&nbsp;&nbsp;&nbsp;<i class="em em-angry"></i></h4></label></td></tr></table>
+							  <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 10:03:17 (HH:MM:SS)</small></p>
+							  <div id="timeline-intent-2" class="timeline-body" style='display:none'>
+							  <p><b>Data: </b>Unlimited</br><b>Calls: </b>Unlimited</br><b>SMS: </b>100</p>
+							</div>
 							</div>
 						  </div>
 						</li>
@@ -626,7 +632,7 @@
 							</div>
 							<hr>
 							<div id="timeline-body-2" class="timeline-body" style='display:none'>
-							  <p>Plan: Freedom-80</br>Voice: Unlimited</br>SMS: 100 per day</br>Data: Unlimited </br>Rent: $80</p>
+							  <p><b>Plan: </b>Freedom-80</br><b>Voice: </b>Unlimited</br><b>SMS: </b>100 per day</br><b>Data: </b>Unlimited </br><b>Rent: </b>$80</p>
 							</div>
 						  </div>
 						</li>
@@ -634,11 +640,11 @@
 						  <div class="timeline-badge danger"></div>
 						  <div class="timeline-panel">
 							<div class="timeline-heading">
-							  <table><tr><td><label onclick="toggleConv('src','timeline-body-3');"><h4 class="timeline-title">Unrecognized Utterance&nbsp;&nbsp;&nbsp;&nbsp;<i class="em em-runner" style="transform: scaleX(-1);"></i></h4></label></td></tr></table>
+							  <table><tr><td><label onclick="toggleConv('src','timeline-intent-3');"><h4 class="timeline-title">Unrecognized Utterance&nbsp;&nbsp;&nbsp;&nbsp;<i class="em em-runner" style="transform: scaleX(-1);"></i></h4></label></td></tr></table>
 							  <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 10:03:26 (HH:MM:SS)</small></p>
 							</div>
 							<hr>
-							<div id="timeline-body-3" class="timeline-body" style='display:none'>
+							<div id="timeline-intent-3" class="timeline-body" style='display:none'>
 							  <p><b>80 bucks?...T-Mobile offers much cheaper plans.</b></p>
 							  <hr>
 

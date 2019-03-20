@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
 var data={'session_id':'9786597778'}
 
-$.post('http://127.0.0.1:4000/get_conversation',data,function(response){
+/*$.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 	console.log(response)
 	console.log(response['conversation'])
 	var chats=response['conversation'].split("\n")
@@ -19,10 +19,10 @@ $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 		}
 	}
 
-},'json');
+},'json');*/
 
 
-$.post('http://127.0.0.1:4000/get_gistify',data,function(response){
+/*$.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 	console.log(response);
 	console.log(response['intents']);
 	str='<table class="spacing_0 timeline_tbl" align="center">';
@@ -51,7 +51,7 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 	//document.getElementById("text-area").value=response['conversation']
 
 	//addElementsToTable(response['intents'])
-},'json');
+},'json');*/
 
 function customerChat(chat){
 	var div_id="chat_conversations_"+i;

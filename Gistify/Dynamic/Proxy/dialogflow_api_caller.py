@@ -139,7 +139,7 @@ class ChatSummarizer(Resource):
         r=requests.post(url,headers=headers, data=json.dumps(payload))
         res=json.loads(r.text)
         print(res)
-        data=json_creator(file,res['sessionId'],res['status']['code'],res['status']['errorType'],res['result']['resolvedQuery'],res['result']['metadata']['intentId'],res['result']['metadata']['intentName'],res['result']['metadata']['isFallbackIntent'],res['result']['action'],res['result']['parameters'],res['result']['fulfillment']['speech'],res['result']['actionIncomplete'])   
+        data=json_creator(file,res['sessionId'],res['status']['code'],res['status']['errorType'],res['result']['resolvedQuery'],res['result']['metadata']['intentId'],res['result']['metadata']['intentName'],res['result']['metadata']['isFallbackIntent'],res['result']['action'],res['result']['parameters'],res['result']['fulfillment']['speech'],res['result']['actionIncomplete'])  
         js=json.dumps(data)
         return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
 
@@ -225,6 +225,7 @@ class GetJsonGistify(Resource):
         intent_text_map={}
         intent_action_map={}
         intent_time_map={}
+        intent_parameters_map={}
         
         result = {}
         result['intents'] = []
@@ -232,6 +233,7 @@ class GetJsonGistify(Resource):
         for item in data['sequence']:
             if item['intentName']!="Default Welcome Intent" and item['actionIncomplete']==False:
                 intents.append(item['intentName'])
+                intent_parameters_map[item['intentName']]=item['parameters']
                 if item['intentName'] not in intent_text_map:
                     if item['isFallBackIntent']!="true":
                         intent_text_map[item['intentName']]=[item['bot_response']]
@@ -258,7 +260,8 @@ class GetJsonGistify(Resource):
                      'intent':item,
                      'action':intent_action_map[item],
                      'text' : intent_text_map[item],
-                     'time' : intent_time_map[item]
+                     'time' : intent_time_map[item],
+                     'parameters': intent_parameters_map[item]
                      }])             
      
         #return(jsonify(result))
@@ -334,6 +337,9 @@ class GetActionableIndicators(Resource):
 
 		intents=[]
 		intent_text_map={}
+		competitor_count=0
+		previous_interaction_count=0
+		negative_sentiment_count=0
 
 		result = {}
 		result['actions'] = []

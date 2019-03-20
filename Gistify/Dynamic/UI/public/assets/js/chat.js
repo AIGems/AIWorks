@@ -36,9 +36,13 @@ $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 			botChat(chats[i]);
 		}
 	}
-	keyextract()
+	//keyextract()
 
 },'json');
+}
+
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
 }
 
 function get_gistify(session_id){
@@ -47,42 +51,87 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 	console.log(response);
 	console.log(response['intents']);
 	str='<table width="90%"><tr><th width="45%">Bot Action</th><th width="45%">Customer Intent</th></tr></table><ul class="timeline">'
-	var dict = { "Bill Details" : "white.jpg","Change Plan": "angry.png", "Bill Payment No": "white.jpg","Bill Payment Yes": "white.jpg", "Bill Payment": "white.jpg", "Default Fallback Intent"  : "white.jpg"};
-	var churn_dict = { "Bill Details" : "white.jpg","Change Plan": "white.jpg", "Bill Payment No": "white.jpg","Bill Payment Yes": "white.jpg", "Bill Payment": "white.jpg", "Default Fallback Intent"  : "white.jpg" };
+	var dict = { 'Change Plan': '<i class="em em-angry"></i>', 'Handoff To Agent': '<i class="em em-runner" style="transform: scaleX(-1);"></i>'};
 
 	for(i=0;i<=response['intents'].length-1;i++){
-		//console.log(response['intents'][i][0]);
 		var intent=response['intents'][i][0]['intent'];
 		var action=response['intents'][i][0]['action'];
 		var outtext=response['intents'][i][0]['text'][0];
 		var time=response['intents'][i][0]['time'];
+		var parameters=response['intents'][i][0]['parameters'];
+		var parameter_str;
 
+		var absence_flag=isEmpty(parameters)
 		console.log(intent);
 		console.log(action);
 		console.log(outtext);
+		console.log(parameters);
+		console.log(absence_flag);
 		console.log(dict[intent]);
-
+		
 		if(action=="input.unknown")
 		{
 			action="Unrecognized Utterance";
+			intent="Handoff To Agent";
 			document.getElementById("handoff").innerHTML="<i>"+outtext+"</i>";
 		}
 
 		if(i==(response['intents'].length-1)){
-			intent_icon='<div class="timeline-badge danger"><i class="glyphicon glyphicon-thumbs-down"></i></div>';
+			intent_icon='<div class="timeline-badge danger"></i></div>';
 		}
 		else{
-			intent_icon='<div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>';
+			intent_icon='<div class="timeline-badge warning"></i></div>';
 		}
 
 		var expandable_id="timeline_expandale_id_"+i;
 		var overlay_id="timeline_overlay_cont_id_"+i;
+		var timeline_intent_id="timeline_intent_id_"+i;
 
 
-		str+='<li class="timeline-inverted">'+intent_icon+'<div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+intent+'</h4><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+time+' (HH:MM:SS)</small></p></div></div></li><li><div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div><div class="timeline-panel"><div class="timeline-heading"><table><tr><td><label onclick="toggleConv(\'src\',\''+overlay_id+'\');"><h4 class="timeline-title">'+action+'</h4></label></td></tr></table></div><hr><div id="'+overlay_id+'" class="timeline-body" style="display:none"><p>'+outtext+'</p></div></div></li>';
+		str+='<li class="timeline-inverted">'+intent_icon+'<div class="timeline-panel"><div class="timeline-heading">';
+		if(absence_flag===false){
+			console.log("inside parameters")
+			console.log("Intent is")
+			console.log(intent)
+			console.log("dict of intent is")
+			console.log(dict[intent])
+			if(dict.hasOwnProperty(intent)){
+				str+='<table><tr><td><label onclick="toggleConv(\'src\',\''+timeline_intent_id+'\');"><h4 class="timeline-title">'+intent+'&nbsp;&nbsp;&nbsp;&nbsp;'+dict[intent]+'</h4></label></td></tr></table><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+time+' (HH:MM:SS)</small></p>';
+			}
+			else{
+			str+='<table><tr><td><label onclick="toggleConv(\'src\',\''+timeline_intent_id+'\');"><h4 class="timeline-title">'+intent+'</h4></label></td></tr></table><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+time+' (HH:MM:SS)</small></p>';
+			}
+			
+			parameter_str='<div id="'+timeline_intent_id+'" class="timeline-body" style="display:none">';
+			
+			for (var key in parameters) {
+				if (parameters.hasOwnProperty(key)) {           
+					console.log(key, parameters[key]);
+					if(parameters[key] !== null && parameters[key] !== ''){
+					parameter_str+='<p><b>'+key+': </b>'+parameters[key]+'</p>';
+					}
+				}
+			}
+			
+			parameter_str+='</div>';
+			console.log("parameter_str");
+			console.log(parameter_str);
+			str+=parameter_str;
+		}
+		else{
+			if(dict.hasOwnProperty(intent)){
+				str+='<h4 class="timeline-title">'+intent+'&nbsp;&nbsp;&nbsp;&nbsp;'+dict[intent]+'</h4><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+time+' (HH:MM:SS)</small></p>';
+			}
+			else{
+				str+='<h4 class="timeline-title">'+intent+'</h4><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+time+' (HH:MM:SS)</small></p>';
+			}
+		}
+		str+='</div></div></li><li><div class="timeline-badge"></div><div class="timeline-panel"><div class="timeline-heading"><table><tr><td><label onclick="toggleConv(\'src\',\''+overlay_id+'\');"><h4 class="timeline-title">'+action+'</h4></label></td></tr></table></div><hr><div id="'+overlay_id+'" class="timeline-body" style="display:none"><p>'+outtext+'</p></div></div></li>';
 
 	}
 	str+='</ul></div>'
+	console.log("Get_Gistify_Output_Str");
+	console.log(str);
 	document.getElementById("chat_gistify_timeline_view").innerHTML=str;
 
 	var handoff_intent=response['intents'][response['intents'].length-2][0]['intent'];
