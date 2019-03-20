@@ -18,7 +18,7 @@ fetch(url).then(function(response) {
 
 
 function chat_widget(session_id){
-var data={'session_id':session_id}	
+var data={'session_id':session_id}
 $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 	console.log(response)
 	//session_id=get_session();
@@ -96,4 +96,56 @@ function botChat(chat){
 
 	div.appendChild(table);
     document.getElementById("chat_widget_container_id").appendChild(div);
+}
+function agentReply(id) {
+	var message = document.getElementById(id).value;
+
+	if (message) {
+		var originalDiv = document.getElementById("chat_widget_container_id")
+		var div = document.createElement("div")
+		div.classList.add("chat_conversation_left")
+		// create elements <table>
+		var tbl = document.createElement("table");
+		var tblBody = document.createElement("tbody");
+		tbl.classList.add("conversation_table")
+		tbl.classList.add("l_float")
+		// table row creation
+		var row = document.createElement("tr");
+		// create element <td> and text node
+		//Make text node the contents of <td> element
+		// put <td> at end of the table row
+		var cell_1 = document.createElement("td");
+		cell_1.classList.add("chat_img_cont");
+		var img_1 = document.createElement("img");
+		img_1.setAttribute("src", "assets/img/wwe-agent-icon.png");
+		img_1.setAttribute("alt", "Agent");
+		img_1.classList.add("img_round_64");
+		cell_1.appendChild(img_1);
+		row.appendChild(cell_1);
+
+		var cell_2 = document.createElement("td");
+		cell_2.classList.add("conv_indicator_cont_left");
+		cell_2.classList.add("r_float");
+		var img_2 = document.createElement("img");
+		img_2.setAttribute("src", "assets/img/triangle.png");
+		img_2.setAttribute("alt", "");
+		img_2.classList.add("conv_indicator_left")
+		cell_2.appendChild(img_2);
+		row.appendChild(cell_1);
+
+		var cell_3 = document.createElement("td");
+		cell_3.classList.add("conversation_cont_left")
+		var cellText_3 = document.createTextNode(message);
+		cell_3.appendChild(cellText_3)
+		row.appendChild(cell_3)
+
+		tblBody.appendChild(row);
+		tbl.appendChild(tblBody);
+		div.appendChild(tbl)
+		originalDiv.appendChild(div)
+		document.getElementById(id).value=""
+	}
+}
+function scrollDown() {
+	$(".container-chat-borderStyle").scrollTop($(".container-chat-borderStyle")[0].scrollHeight);
 }
