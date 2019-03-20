@@ -19,12 +19,8 @@ fetch(url).then(function(response) {
 function chat_widget(session_id){
 var data={'session_id':session_id}	
 $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
-	//console.log(response)
-	//console.log(response['conversation'])
-	//wholechat=response['conversation'];
-	//wholechat=wholechat.toString();
-	//console.log("Wholechat");
-	//console.log(wholechat);
+
+    var chat_for_notes=response['conversation'];
 	var chats=response['conversation'].split("\n");
 	console.log(chats)
 
@@ -36,6 +32,7 @@ $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 			botChat(chats[i]);
 		}
 	}
+	//notes_summary(chat_for_notes);
 	//keyextract()
 
 },'json');
@@ -43,6 +40,16 @@ $.post('http://127.0.0.1:4000/get_conversation',data,function(response){
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
+}
+
+function notes_summary(chat_notes){
+	console.log("Chat_Notes")
+	console.log(chat_notes)
+	var data={'query':chat_notes,'length':3}
+$.post('http://127.0.0.1:4000/summarize_notes',data,function(response){
+	console.log("Notes Summary")
+	console.log(response)
+},'json');
 }
 
 function get_gistify(session_id){
@@ -74,6 +81,8 @@ $.post('http://127.0.0.1:4000/get_gistify',data,function(response){
 			action="Unrecognized Utterance";
 			intent="Handoff To Agent";
 			document.getElementById("handoff").innerHTML="<i>"+outtext+"</i>";
+			summary_notes="Customer intent was "+response['intents'][i-1][0]['intent']+".Bot takes "+response['intents'][i-1][0]['action']+" action and showed '"+response['intents'][i-1][0]['text'][0]+"'.Bot handoff due to unrecognized utterance ('"+outtext+"')."
+			document.getElementById("acw").innerHTML=summary_notes;
 		}
 
 		if(i==(response['intents'].length-1)){

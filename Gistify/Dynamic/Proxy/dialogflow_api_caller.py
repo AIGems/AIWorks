@@ -90,6 +90,106 @@ def calculate_sentiment_score(chatlist):
         s=sent.Sentiment({'text':line})
         sentiment_score_list.append((s['text'],s['polarity'],s['polarity_confidence']))
     return(sentiment_score_list)
+
+def read_text(text):
+    """ Read the file at designated path and throw exception if unable to do so """ 
+    try:
+        formatted_text=[]
+        #with open(path, 'r') as file:
+        #    text=file.read()
+        print("inside read text")
+        print(text)
+        print("splitting text based on new line")
+        text_lines=text.split("\n")
+        print(text_lines)
+        for line in text_lines:
+            if line and line[-1] not in list(punctuation):
+                line=line+"."
+                
+            formatted_text.append(line)
+        text="\n".join(formatted_text)
+        print("Conversation : ")
+        print(text)
+        return text
+    
+    except IOError as e:
+        print("Fatal Error: File ({}) could not be locaeted or is not readable.".format(path))
+
+def sanitize_input(data):
+    """ 
+    Currently just a whitespace remover. More thought will have to be given with how 
+    to handle sanitzation and encoding in a way that most text files can be successfully
+    parsed
+    """
+    replace = {
+        ord('\f') : ' ',
+        ord('\t') : ' ',
+        ord('\n') : ' ',
+        ord('\r') : None
+    }
+
+    return data.translate(replace)
+
+def tokenize_content(content):
+    stop_words=list(set(stopwords.words('english')))+list(punctuation)
+    words=word_tokenize(content.lower())
+    
+    return([sent_tokenize(content),[word for word in words if word not in stop_words] ])
+
+def score_tokens(filterd_words, sentence_tokens):
+    """
+    Builds a frequency map based on the filtered list of words and 
+    uses this to produce a map of each sentence and its total score
+    """
+    word_freq = FreqDist(filterd_words)
+
+    ranking = defaultdict(int)
+
+    for i, sentence in enumerate(sentence_tokens):
+        for word in word_tokenize(sentence.lower()):
+            if word in word_freq:
+                ranking[i] += word_freq[word]
+
+    return ranking
+
+def summarize(ranks, sentences, length):
+    """
+    Utilizes a ranking map produced by score_token to extract
+    the highest ranking sentences in order after converting from
+    array to string.  
+    """
+    if int(length) > len(sentences): 
+        print("Error, more sentences requested than available. Use --l (--length) flag to adjust.")
+        exit()
+
+    indexes = nlargest(int(length), ranks, key=ranks.get)
+    final_sentences = [sentences[j] for j in sorted(indexes)]
+    return ' '.join(final_sentences)
+
+
+class NotesSummarizer(Resource):
+    def post(self):
+        """ Drive the process from argument to output """ 
+        args = parser.parse_args()
+        content = read_text(args['query'])
+        content = sanitize_input(content)
+    
+        sentence_tokens, word_tokens = tokenize_content(content)  
+        sentence_ranks = score_tokens(word_tokens, sentence_tokens)
+        #print("\nSummary :")
+        #return self.summarize(sentence_ranks, sentence_tokens, args.length)
+        data=summarize(sentence_ranks, sentence_tokens, args['length'])
+        data=data.replace("I","Customer")
+        data=data.replace("My","Customer")
+        data=data.replace("my","Customer")
+        data=data.replace("Your","Customer")
+        data=data.replace("your","Customer")
+        data=data.replace("You","Customer")
+        data=data.replace("you","Customer")
+
+
+        js=json.dumps(data)
+        return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
     
 #json_creator(file_path,sess_id,status_code,res['status']['errorType'],res['result']['resolvedQuery'],res['result']['metadata']['intentId'],res['result']['metadata']['intentName'],res['result']['metadata']['isFallbackIntent'],res['result']['action'],res['result']['parameters'],res['result']['fulfillment']['speech'])   
 
@@ -454,7 +554,6 @@ class KeywordExtract(Resource):
         return Response(js,headers={'Access-Control-Allow-Origin' : '*' },mimetype='application/json')
         #return(jsonify(r.get_ranked_phrases()[:args['length']]))
 
-api.add_resource(Summarizer, '/summarizer')
 api.add_resource(ChatSummarizer, '/chatsummarizer')
 api.add_resource(DesignerSummarizer, '/designersummarizer')
 api.add_resource(GetJsonSummary, '/get_summary')
@@ -467,6 +566,7 @@ api.add_resource(KeywordExtract,'/keywords_extract')
 api.add_resource(GetActionableIndicators,'/get_signals')
 api.add_resource(AddSession,'/add_session')
 api.add_resource(RetrieveSession,'/retrieve_session')
+api.add_resource(NotesSummarizer,'/summarize_notes')
 
 if __name__ == '__main__':
     #app.run(debug=True,host='0.0.0.0', port=4000,ssl_context='adhoc')
