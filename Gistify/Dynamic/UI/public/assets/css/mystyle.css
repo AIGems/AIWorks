@@ -366,6 +366,7 @@ table.spacing_0 td{
 .actionable_signals{
 	font-size: 14px;
 	font-family: roboto;
+	font-weight: bold;
 	margin: 5px;
 	border-radius: 9px;
   color: #4f5964;
