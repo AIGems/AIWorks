@@ -502,7 +502,7 @@ class GetActionableIndicators(Resource):
 		intents=[]
 		intent_text_map={}
 		competitor_count=0
-		previous_interaction_count=0
+		previous_interaction_count=-1
 		negative_sentiment_count=0
 
 		result = {}

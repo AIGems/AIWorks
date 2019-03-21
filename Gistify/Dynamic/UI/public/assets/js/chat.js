@@ -173,7 +173,7 @@ $.post('http://127.0.0.1:4000/competitor',data,function(response){
 	}
 	else{
 		console.log("no competitor mentioned")
-		competitor_str='';
+		competitor_str='<button id="competitor" class="actionable_signals">No Competitor Mention</button>';
 	}
 	callback(competitor_str);
 },'json');
@@ -212,7 +212,7 @@ $.post('http://127.0.0.1:4000/scoresentiment',data,function(response){
 	}
 	else{
 		console.log("no negative sentiment")
-		max_negative_str='';
+		max_negative_str='<button id="sentiment" class="actionable_signals">No Negative Sentiment</button>';
 	}
 	callback(max_negative_str);
 },'json');
@@ -234,7 +234,12 @@ var data={'session_id':session_id}
 		var previous_interaction_line=response['actions'][0]['previous_interaction']['index']
 		//var sentiment=response['actions'][0]['sentiment']['index']
 
+		if(previous_interaction_line!==-1){
 		str='<button id="previous" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+previous_interaction_line+'_conversation\')">Previous Interaction Referred</button>';
+		}
+		else{
+		str='<button id="previous" class="actionable_signals">No Previous Interaction</button>';
+		}
 		document.getElementById("previous_div").innerHTML = str;
 	},'json');
 	
