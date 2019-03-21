@@ -231,8 +231,6 @@ def get_competitor_mention_from_chat_transcript(chat_transcript, threshold=60):
     return result_list
 
 
-
-
 class NotesSummarizer(Resource):
     def post(self):
         """ Drive the process from argument to output """ 
@@ -580,7 +578,7 @@ class ClearJsonSummary(Resource):
         
 class DialogFlowWebhook(Resource):
     def showBill(self,result):
-        number=result['parameters']['ANI']
+        number=result['parameters']['MobileNumber']
         response="Here are the details for mobile number "+number+": Rent: $60 Excess Data: $8.3 Tax: $3.2 Total: $60.5 . Would you like to pay now? "
         return(response)
         
@@ -598,7 +596,7 @@ class DialogFlowWebhook(Resource):
         result=json.loads(result)
         if result['action']=="ShowBillDetails":
             response=self.showBill(result)
-        elif result['action']=="Plan_Calculate":
+        elif result['action']=="ShowPlan":
             response=self.showPlan(result)
             
         data={'speech' : response, 'displayText':response }
