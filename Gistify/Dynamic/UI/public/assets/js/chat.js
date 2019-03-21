@@ -226,12 +226,7 @@ var data={'session_id':session_id}
 	console.log("competitor api invoked")
 	console.log(competitor_str)
 	document.getElementById("competitor_div").innerHTML = competitor_str;
-	
-	get_negative_indicator(session_id,function(max_negative_str){
-	console.log("max_negative api invoked")
-	console.log(max_negative_str)
-	document.getElementById("sentiment_div").innerHTML = max_negative_str;
-	
+		
 	$.post('http://127.0.0.1:4000/get_signals',data,function(response){
 		console.log(response)
 		console.log(response['actions'])
@@ -242,6 +237,11 @@ var data={'session_id':session_id}
 		str='<button id="previous" class="actionable_signals" onclick="clickAnyWhere(\'chat_conversations_'+previous_interaction_line+'_conversation\')">Previous Interaction Referred</button>';
 		document.getElementById("previous_div").innerHTML = str;
 	},'json');
+	
+	get_negative_indicator(session_id,function(max_negative_str){
+	console.log("max_negative api invoked")
+	console.log(max_negative_str)
+	document.getElementById("sentiment_div").innerHTML = max_negative_str;
 		});
 	});
 }
